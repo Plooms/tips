@@ -1,0 +1,14 @@
+#!/bin/bash
+put it in ~/.bashrc
+
+
+start() {
+            sudo pacman -S $1
+        }
+
+        
+        
+        
+stop()  {
+            echo "$1"
+        }

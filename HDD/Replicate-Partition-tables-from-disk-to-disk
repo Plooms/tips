@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# This is to replicate partition tables from disk to disk
+# so that if you have 20 disks, just create the partition scheme on the first one
+# then enter the following commands to have them replicated on all of them
+
+
+
+# First, create a backup of the MBR (which contains the partition table)
+{
+
+ dd if=/dev/sda of=mbr bs=512 count=1
+
+}
+# Then, this is what you need to do to restore it
+{
+  # For single drive
+      
+      dd if=mbr of=/dev/sdc
+
+  
+  # For Multi Drive
+      
+      for i in {b..z} ; do dd if=mbr of=/dev/sd$i ; done
+
+}
+# Alteranate method #
+{
+  # Copy from sdb to sda
+  sfdisk -d /dev/sdb | sfdisk /dev/sda
+
+}
+# Alteranate method 2 #
+{
+
+  sfdisk -d /dev/sda > mbr
+
+  sfdisk /dev/sdb < mbr
+
+}
+# Reload the partition table in order to see the changes.
+{
+
+ partprobe
+
+}
+# Check the partitions
+{
+ 
+ ls /dev/sd*
+
+or
+
+ cat /proc/partitions
+
+}

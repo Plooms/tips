@@ -1,0 +1,25 @@
+#!/bin/bash
+
+>!
+Redirect standard output; overwrite file if it exists
+
+>
+Redirect standard output
+
+>&
+Redirect standard output and standard error
+
+<
+Redirect standard input
+
+>&!
+Redirect standard output and standard error; overwrite file if it exists
+
+|
+Redirect standard output to another command (pipe)
+
+>>
+Append standard output
+
+>>&
+Append standard output and standard error

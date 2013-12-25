@@ -1,0 +1,114 @@
+#!/bin/bash
+# Create Containers to install Arch on them
+
+ # install needed packages
+{
+  p cryptsetup
+  
+  p multipath-tools-git
+}
+
+
+
+ # Set the Variables (C = Container)
+ C_LOCATION='/run/media/abz/Home-Backup'
+ C_NAME='archlinux.iso'
+ LOOP_DEV='loop1'
+ MNT_LOCATION='/mnt/arch'
+
+
+
+ # Creating the Mount Location
+{
+	
+  sudo mkdir "$MNT_LOCATION"
+
+
+
+ # Creating the File
+{
+	
+  dd if=/dev/zero of="$C_LOCATION"/"$C_NAME" bs=1024K count=1500
+
+}
+ 
+ 
+ # Create the container (loop0 can be loop1 if that doesn't work)
+{ 
+	
+  sudo losetup /dev/$LOOP_DEV "$C_LOCATION"/"$C_NAME"
+
+}
+  
+  
+ # Partition It
+{ 
+	
+  sudo cfdisk /dev/$LOOP_DEV
+
+}
+ 
+
+ # Connect the container with device mapper (dm) to enable /dev/mapper/loop0XX
+{ 
+
+  sudo kpartx -a /dev/$LOOP_DEV
+
+}
+ 
+ 
+ # Formatting Our Container
+{
+
+  # NOTE: If (Logical partition)
+   sudo mkfs.ext4 /dev/mapper/"$LOOP_DEV"p5
+ 
+  # NOTE: If (Primary Partition)
+   sudo mkfs.ext4 /dev/mapper/"$LOOP_DEV"p1
+
+}
+ 
+ 
+ # Mounting the Container
+{
+  
+  # NOTE: If (Logical partition)
+  sudo mount /dev/mapper/"$LOOP_DEV"p5 "$MNT_LOCATION"
+  
+  # NOTE: If (Primary Partition)
+  sudo mount /dev/mapper/"$LOOP_DEV"p1 "$MNT_LOCATION"
+
+}
+
+
+
+#######################################################
+
+# After Finishing Installation
+
+
+ # Disconnect the container from device mapper (dm) and loop device
+{ 
+
+  sudo kpartx -d /dev/$LOOP_DEV
+  sudo losetup -d /dev/$LOOP_DEV
+
+}
+
+ # NOTE: The Variables to use in Arch install Guide
+{  
+  HDD_MASTER='/dev/loop1'
+
+  HDD_ROOT='/dev/mapper/loop1p1'
+}
+
+
+
+#######################################################################
+	
+# Resources
+ 
+https://wiki.archlinux.org/index.php/Linux_Containers
+http://www.linux.org/threads/encrypted-containers-without-truecrypt.4478/
+http://lxc.teegra.net/
+  

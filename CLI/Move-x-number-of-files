@@ -1,0 +1,5 @@
+#!/bin/bash
+#Move x number of files in (head -20000)
+
+
+ls | sort -n | head -20000| xargs -i mv "{}" /destination

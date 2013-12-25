@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# Create an Encrypted Backup, preferably for offsite backups
+
+# Install [CLI]
+{
+ 
+  p duplicity
+
+}
+
+# Install [GUI]
+{
+  
+  p deja-dup 
+  
+  p crashplan
+  
+}
+
+# If using SSH (install secure key to backup location,
+# [SAFE] to use on foreign pc)
+{
+
+  ssh -o HostKeyAlgorithms='ssh-rsa' user@host
+
+}
+
+# BACKUP:
+{
+  
+  # Backup /home/user/ >> /home/user/backup/ [file] (v9 is verbose level 0-9 low-high) (volumesize=250 MB default is 25 MB
+  
+  
+  duplicity -v9 --volsize 250 /home/user/ file:///home/user/backup/
+  
+  
+  # Backup /home/user/ >> 10.0.0.1:/home/user/backup [ssh] (v9 is verbose level [0-9] low-high)
+  
+  duplicity -v9  --volsize 250 /home/user/ ssh://10.0.0.1//home/user/backup/
+  
+  duplicity -v9 --volsize 250  /home/user/ ssh://user:password@host:port//home/user/backup/
+
+}
+
+# RESTORE
+{
+  
+  # Restore /home/user/backup/ >> /home/user/ [file] 
+  
+  duplicity -v9  --volsize 250 file:///home/user/backup/ /home/user/
+  
+  # Backup 10.0.0.1:/home/user/backup /home/user/ [ssh] 
+    
+  duplicity -v9 --volsize 250  ssh://10.0.0.1//home/user/backup/ /home/user/
+  
+  # Restore folder /home/user/backup/ASS >> /home/user/ASS [Folder] 
+  
+  duplicity -v9 --file-to-restore ASS/ file:///home/user/backup/ /home/user/ASS/
+
+
+}
+
+# List files
+{
+
+  # List files in encrypted backup location
+  
+  duplicity list-current-files file:///home/user/backup/
+  
+}

@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# NOTE : you can restore old settings from .config/vlc #
+
+
+# To add speed bar to player toolbar
+Customize interface > then just drag the speed applet to the fullscreen toolbar
+
+# To pause when minimized
+preferences > interface > Pause playback when minimized
+
+# To start in fullscreen
+preferences > video > fullscreen
+
+# To hide (player bar & mouse) faster
+preferences > show all settings > Video > Hide cursor and fullscreen (1 ms)
+
+
+# To change Jump length
+preferences > show all settings > Hotkey setttings > Jump sizes ( 3,3,60,9999 )
+
+# To add mouse gestures
+preferences > show all settings > Control interfaces > mouse gestures
+
+# To show video title on video start 
+preferences > show all settings > Video > Show media title + show video title for ??? ms
+
+# To force aspect ratio
+preferences > show all settings > Video > source aspect ratio = 16:9
+
+# To quit vlc after playback
+n .xbmc/userdata/playercorefactory.xml 
+
+	# then
+	<args>"{1}" vlc://quit</args>
+	
+	# or (better)
+	<args>"{1}" --play-and-exit </args>
+
+
+
+
+
+# Mouse Gestures
+    left : Short time skip backward (10sec by default)
+    right : Short time skip forward (10sec by default)
+    left-up : Faster
+    right-up : Slower
+    left-down : Go to previous entry in playlist
+    right-down : Go to next entry in playlist
+    left-right : Play/Pause
+    right-left : Play/Pause 
+
+    up : Volume up
+    down : Volume down
+    up-down : Mute Volume
+    down-up : Mute Volume
+    up-right : Change Audio track
+    down-right : Change Subtitle track
+    up-left : Enter fullscreen mode
+    down-left : Quit VLC 

@@ -1,0 +1,28 @@
+#!/bin/bash
+cd into parent directory
+
+# Finished is the name of the folder
+
+
+for i in `ls --color=no`; do mkdir -vp $i/Finished; done
+
+
+
+#to make directory for every file
+
+shopt -s extglob
+for file in /media/Original/.Download-folder/New\ Folder/* ; do
+    dir=$(mktemp -d "$file.XXX")
+    mv "$file" "$dir"
+    mv "$dir" "$file"
+done
+
+
+
+# simple example
+
+for node in 'o' 'b'
+do
+    ssh $node "uptime"
+done
+

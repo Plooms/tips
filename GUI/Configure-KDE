@@ -1,0 +1,321 @@
+#!/bin/bash
+# Configure KDE
+
+# Install to configure GTK apps
+	
+	# Community
+	p kde-gtk-config 
+	
+	# or AUR
+	p kcm-gtk
+
+
+
+
+System Settings > Application Appearance > Fonts
+#######################################################################
+	
+	20
+	19
+	
+	16
+	19
+	
+	19
+	18
+	
+	20
+	19
+	
+	anti aliasing = system settings
+	(check) force font DPI = 96
+
+#######################################################################
+
+
+
+
+
+
+
+
+
+
+System Settings > Shortcuts & Gestures > Global Keyboard Shortcuts
+#######################################################################
+actual size > ctrl-alt-9
+close window > alt-f4
+decrease opacity > ctrl-alt-w
+increase opacity > ctrl-alt-Q
+maximize > ctrl-alt-7
+minimize > ctrl-alt-m
+quick tile window to left > ctrl-alt-1
+quick tile window to right > ctrl-alt-2
+window to next screen > ctrl-alt-8
+zoom in > ctrl-alt-5
+zoom out > ctrl-alt-6
+#######################################################################
+
+
+
+
+
+
+System Settings > Desktop Effects > General
+#######################################################################
+(check) enable effect
+(check) improved management
+(check) various animations
+
+Animation speed = instant
+#######################################################################
+
+
+
+
+
+
+
+
+System Settings > Desktop Effects > All effects
+#######################################################################
+[zoom] options:  
+
+zoom factor =  1.80 
+Pointer = keep
+tracking = proportional
+(check) enable focus
+(check) follow focus
+#######################################################################
+[blur]
+[dashboard]
+[fade]
+[highlight window]
+[Kscreen]
+[login]
+[logout]
+[maximize]
+[minimize]
+[screen edge]
+[screenshot]
+[slide]
+[sliding thumbs]
+[taskbar thumbs]
+[translucency]
+[startup feedback]
+[dialog parent]
+[dim screen for admin]
+[desktop grid]
+#######################################################################
+[present windows] options:
+
+layout mode = regular grid
+
+(check)
+(check)
+(check)
+(check)
+(check)
+
+      Windows						Desktop
+left = activate window             left = no
+middle = no                        middle = no
+right = no                         right = no
+#######################################################################
+
+
+
+
+
+
+
+
+
+System Settings > Desktop Effects > Advanced
+#######################################################################
+
+Tearing prevention = Full scene repaints
+
+#######################################################################
+
+
+
+
+
+
+
+
+
+
+System Settings > Workspace appearance > window decorations
+#######################################################################
+ click on get new decorations , select (glowglass (aurorae) by vicko )
+
+[configure decorations] 
+border size = normal
+button size = oversized
+[uncheck close window by double clicking]
+#######################################################################
+
+
+
+
+
+
+
+
+System Settings > Workspace appearance > cursor theme
+#######################################################################
+choose a mouse and select 48 as the size
+#######################################################################
+
+
+
+
+
+
+
+System Settings > Desktop search > Basic settings
+#######################################################################
+[uncheck] enable nepomuk
+#######################################################################
+
+
+
+
+
+
+
+
+
+System Settings > Window Behaviour > Window Behaviour
+#######################################################################
+<Focus> : 
+
+[Policy] = Click to focus (mouse precedence)
+
+(check) separate screen focus
+
+
+
+
+<titlebar actions>
+
+double click = maximize
+wheel event = switch to window tab left/right
+
+
+<advanced>
+
+[Placement] : centered
+
+(check) hide utility windows
+#######################################################################
+
+
+
+
+
+
+
+System Settings > Window Behaviour > Window rules
+#######################################################################
+
+ # This will be filled with your options later #
+
+#######################################################################
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+System Settings > Workspace Behaviour > Screen edges
+#######################################################################
+[top right/left] : Present windows (all desktops)
+
+[bottom left] : show dashboard
+
+
+(check) maximize windows by dragging
+(check) tile windows by dragging
+ 
+[Activation delay] = 50 ms
+
+[Re-activation delay] = 200 ms
+#######################################################################
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+System Settings > Input devices > Keyboard
+#######################################################################
+<hardware> : 
+
+[numlock] : turn on
+
+
+<layouts>
+
+[layout indicator]
+
+(check) show layout indicator
+(check) show for single layouts
+
+* show label on flag
+
+[switching policy] = global
+
+[shortcuts] = Main=alt-shift
+
+(check) configure layouts
+
+[add layouts]
+#######################################################################
+
+
+
+
+
+
+
+
+
+System Settings > Power management > energy saving
+#######################################################################
+[uncheck] screen energy saving
+[uncheck] suspend session
+#######################################################################
+
+
+
+
+
+
+
+
+
+
+System Settings > Login screen
+#######################################################################
+
+<shutdown>
+
+[boot manager] = grub2
+
+
+<convenience>
+
+# choose your shit
+
+
+
+done

@@ -1,0 +1,63 @@
+#!/bin/bash
+
+
+ # Know your interfaces
+ 
+ ip link show
+ ip addr show
+ 
+ 
+# To use an example profile, 
+	# simply copy one of them from 
+	# /etc/netctl/examples/ to /etc/netctl/ 
+	# and configure it to your needs
+
+
+
+sudo cp /etc/netctl/examples/ethernet-static /etc/netctl/<profile-name>
+
+
+
+# Edit the profile
+
+sudo nano /etc/netctl/LAN
+
+
+# <example working config>
+
+Description='A basic static ethernet connection'
+Interface=enp2s0   <<<<<<<<< \"change this to your interface name\"
+Connection=ethernet
+IP=static
+Address=('10.0.0.3/24')
+#Routes=('10.0.0.0/24 via 10.0.0.139')
+Gateway='10.0.0.139'
+DNS=('8.8.8.8')
+
+
+# Start the profile
+
+sudo netctl start LAN
+
+# If issuing the above command results in a failure,
+#then use this to know why
+
+sudo journalctl -f
+
+sudo netctl status LAN
+
+
+# Enable profile
+
+sudo netctl enable LAN
+
+
+# Enable profile after editing (required)
+
+sudo netctl reenable LAN
+
+#######################################################################
+	
+# Resources
+
+https://wiki.archlinux.org/index.php/Netctl

@@ -1,0 +1,7 @@
+#!/bin/bash
+# Prevent access to unmounted directory
+
+  
+  # When unmounted, do:
+  
+  sudo chattr +i /media/unmounted-dir

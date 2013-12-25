@@ -1,0 +1,10 @@
+#!/bin/bash
+# Opens audio controls in terminal
+
+alsamixer -c 0 
+
+----------------------------------------------------------------
+
+# unmute then enter
+
+sudo alsactl store

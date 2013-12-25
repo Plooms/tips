@@ -1,0 +1,5 @@
+#!/bin/bash
+# Copy / Configure the VPN connection file
+
+  
+sudo nano /etc/NetworkManager/system-connections/New\ York 

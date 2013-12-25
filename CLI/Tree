@@ -1,0 +1,27 @@
+#!/bin/bash
+
+zouhair@heronz:/tmp (17.195 MB) $ mkdir -p media/Shows/{A..H}/Finished
+zouhair@heronz:/tmp (17.195 MB) $ tree media/
+media/
+`-- Shows
+    |-- A
+    |   `-- Finished
+    |-- B
+    |   `-- Finished
+    |-- C
+    |   `-- Finished
+    |-- D
+    |   `-- Finished
+    |-- E
+    |   `-- Finished
+    |-- F
+    |   `-- Finished
+    |-- G
+    |   `-- Finished
+    `-- H
+        `-- Finished
+
+17 directories, 0 files
+
+
+

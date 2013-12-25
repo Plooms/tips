@@ -1,0 +1,41 @@
+#!/bin/bash
+  # grep commands
+
+ 
+ 
+# search for a string called ASS in all text files located in ~abz/*.txt
+{
+ 
+   grep --color "ASS" ~abz/*.txt
+
+}
+
+# search for a text string in all files recursively
+{
+
+  grep --color -Hr "ASS" ~abz/
+
+}  
+
+# print only the filename of the matched string
+{
+
+  grep -Hrl "ASS" ~abz/
+
+}
+
+# grep a file without showing the commented lines (i.e: #,;,$)
+{
+
+ # the ^ means first of the line
+
+ grep -vE '^#|^;|^$' /etc/openvpn/server.conf
+
+}
+
+# Grep two patterns
+{
+  
+  df | grep -E 'shm|run|home'
+  
+}

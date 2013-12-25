@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Install Plex media server & configure it to run as another user
+
+  p plexmediaserver
+
+  sudo mv /opt/plexmediaserver /media/Original/.plexmediaserver
+  
+  sudo ln -s /media/Original/.plexmediaserver /opt/plexmediaserver
+  
+  sudo chown -R abz:users /media/Original/.plexmediaserver
+    
+  n /etc/conf.d/plexmediaserver  
+  # Change user to abz
+  PLEX_MEDIA_SERVER_USER=abz
+
+  
+  s systemctl restart plexmediaserver
+  
+  s systemctl enable plexmediaserver
+  

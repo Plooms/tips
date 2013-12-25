@@ -1,0 +1,7 @@
+#!/bin/bash
+# Create a file with a predetermined size
+
+  
+  # Create a file named 'ass' = 1GB   "Choose either zero or urandom"
+    
+    dd if=/dev/{zero,urandom} of=/mnt/ass bs=1M count=1000

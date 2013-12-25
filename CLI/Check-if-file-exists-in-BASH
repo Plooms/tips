@@ -1,0 +1,70 @@
+#!/bin/bash
+  
+  
+FILE='/what/ever'
+
+DIR='/what/ever/'
+
+
+# check if a file exists in BASH
+{
+
+if [ -f $FILE ];
+then
+   echo "File $FILE exists."
+else
+   echo "File $FILE does not exist."
+fi
+
+}
+
+# check if a file does not exist in BASH
+{
+
+if [ ! -f $FILE ];
+then
+    echo "File not found!"
+fi
+
+}
+
+# check if a directory exists in BASH
+{
+
+if [ -f $DIR ];
+then
+   echo "$DIR exists."
+else
+   echo "$DIR does not exist."
+fi
+
+
+
+}
+
+# check if a directory does not exist in BASH
+{
+
+if [ ! -d $DIR ];
+then
+    echo "$DIR not found!"
+fi
+
+}
+
+# Alternative syntax (might be better)
+{
+
+  # If not found <True> echo this
+  [ ! -d /tmp ] && echo 'Directory /tmp not found'
+  
+  # If found <True> echo this , If not found <False> echo that 
+  # ( "" or '' is important if multiline command)
+  [ -d /tmp ] && echo 'Directory found' || echo 'Directory /tmp not found'
+  
+  # Variable demo
+  MIRRORS=`[ ! -f /etc/ass ] && echo -e "${Red} No Need ${Cyan}" || echo -e "${Green} New!!! ${Cyan}"`
+
+}
+
+

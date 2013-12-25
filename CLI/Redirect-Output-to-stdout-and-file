@@ -1,0 +1,12 @@
+#!/bin/bash
+# Redirect output to file and screen at the same time
+
+
+# to create a new log file everytime
+
+ls -lR / 2>&1 | tee file.log
+
+
+# to append to the same log file
+
+ls -lR / 2>&1 | tee -a file.log

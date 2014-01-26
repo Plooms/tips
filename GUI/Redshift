@@ -3,13 +3,13 @@
 
 
 # Install
-	p redshift	
+	p redshift
 
 # start redshift
 
 	redshift 
  #or
-	gtk-redshift
+	redshift-gtk
 
 # Start redshift with forced region (if failed to get location automatically)
-gtk-redshift -l 24.38:46.46
+redshift-gtk -l 24.38:46.46

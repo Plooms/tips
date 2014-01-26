@@ -39,6 +39,8 @@ LV_NAME='Media'
  sudo pvcreate "$DISKS"
 
  sudo pvdisplay
+ #or (better)
+ sudo pvs 
 
 }
 
@@ -48,6 +50,8 @@ LV_NAME='Media'
   sudo vgcreate "$VG_NAME" "$DISKS"
 
   sudo vgdisplay
+  #or (better)
+  sudo vgs 
 
 }
 
@@ -62,7 +66,8 @@ LV_NAME='Media'
 
 
   sudo lvdisplay
-
+  #or (better)
+  sudo lvs 
 }
 
   # Create a Filesystem

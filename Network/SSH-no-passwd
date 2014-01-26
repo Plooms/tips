@@ -1,9 +1,0 @@
-#!/bin/bash
-# Passwordless ssh logins
-
-# on the host
-
-  ssh-keygen
-
-
-  ssh-copy-id <ip-of-client>

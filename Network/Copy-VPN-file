@@ -2,4 +2,7 @@
 # Copy / Configure the VPN connection file
 
   
-sudo nano /etc/NetworkManager/system-connections/New\ York 
+sudo nano /etc/NetworkManager/system-connections/vpn-name
+
+
+sudo rsync -avhP /etc/NetworkManager/system-connections/vpn-name /home/?

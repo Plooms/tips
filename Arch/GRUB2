@@ -18,12 +18,12 @@
  
  
  
- # To change the resolution used on graphical terminal
- GRUB_GFXMODE=640x480x32
+# To change the resolution used on graphical terminal
+GRUB_GFXMODE=640x480x32
 
 
- # Fix broken grub.cfg gen (add to /etc/default/grub)
- GRUB_DISABLE_SUBMENU=y
+# Fix broken grub.cfg gen (add to /etc/default/grub)
+GRUB_DISABLE_SUBMENU=y
 
 
 ---------------------------------------------------------------------- 

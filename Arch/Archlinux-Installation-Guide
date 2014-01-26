@@ -136,29 +136,29 @@
 # copy the configs to the new system
 {
 
-  sudo rsync -avhHP /etc/yaourtrc "$INSTALL_POINT"/etc/
+  sudo rsync -avhHPL /etc/yaourtrc "$INSTALL_POINT"/etc/
  
-  sudo rsync -avhHP /etc/pacman.conf "$INSTALL_POINT"/etc/
+  sudo rsync -avhHPL /etc/pacman.conf "$INSTALL_POINT"/etc/
  
-  sudo rsync -avhHP /etc/pacman.d/mirrorlist "$INSTALL_POINT"/etc/pacman.d/
+  sudo rsync -avhHPL /etc/pacman.d/mirrorlist "$INSTALL_POINT"/etc/pacman.d/
   
-  sudo rsync -avhHP /etc/profile "$INSTALL_POINT"/etc/
+  sudo rsync -avhHPL /etc/profile "$INSTALL_POINT"/etc/
    
-  sudo rsync -avhHP /etc/modules-load.d/ "$INSTALL_POINT"/etc/modules-load.d/
+  sudo rsync -avhHPL /etc/modules-load.d/ "$INSTALL_POINT"/etc/modules-load.d/
   
-  sudo rsync -avhHP /etc/ssh/ "$INSTALL_POINT"/etc/ssh/
+  sudo rsync -avhHPL /etc/ssh/ "$INSTALL_POINT"/etc/ssh/
   
-  sudo rsync -avhHP /etc/slim.conf "$INSTALL_POINT"/etc/
+  sudo rsync -avhHPL /etc/slim.conf "$INSTALL_POINT"/etc/
   
-  sudo rsync -avhHP /etc/openvpn/ "$INSTALL_POINT"/etc/openvpn/
+  sudo rsync -avhHPL /etc/openvpn/ "$INSTALL_POINT"/etc/openvpn/
   
-  sudo rsync -avhHP /etc/hosts "$INSTALL_POINT"/etc/
+  sudo rsync -avhHPL /etc/hosts "$INSTALL_POINT"/etc/
   
-  sudo rsync -avhHP /etc/bash.bashrc "$INSTALL_POINT"/etc/
+  sudo rsync -avhHPL /etc/bash.bashrc "$INSTALL_POINT"/etc/
   
-  sudo rsync -avhHP /etc/resolv.conf "$INSTALL_POINT"/etc/
+  sudo rsync -avhHPL /etc/resolv.conf "$INSTALL_POINT"/etc/
   
-  sudo rsync -avhHP /home/"$MYUSER"/.zshrc "$INSTALL_POINT"/root/.zshrc
+  sudo rsync -avhHPL /home/"$MYUSER"/.zshrc "$INSTALL_POINT"/root/.zshrc
 
 } 
 
@@ -173,13 +173,13 @@
 -------------------------------------------
   
   # Set The User Variable (in the Chroot)
-  MYUSER='sal'
+  MYUSER='abz'
   
   # Set The HDD Variables (in the Chroot)
-  HDD_MASTER='/dev/sdc'
+  HDD_MASTER='/dev/sda1'
   
   # Set The Container Variables (in the Chroot)
-  HDD_MASTER='/dev/loop1'
+  HDD_MASTER='/dev/loop3'
 
 -------------------------------------------
 
@@ -214,7 +214,7 @@
 
   useradd -G wheel -m -u 1000 -U -s /bin/bash $MYUSER
  
-  sudo rsync -avhHP /root/.zshrc /home/"$MYUSER"/
+  sudo rsync -avhHPL /root/.zshrc /home/"$MYUSER"/
  
   passwd $MYUSER
 
@@ -305,7 +305,7 @@ echo "
 mkdir /media/S1
 mkdir /media/S2
 
-# To prevent writing when unmounted
+# To prevent writing when unmounted (execute it while not mounted)
 sudo chattr +i /media/S1
 sudo chattr +i /media/S2
 
@@ -332,7 +332,7 @@ echo "
 yaourt --noconfirm -S --needed zsh python2-gobject dbus git slim x11vnc \
 procmail vinagre bash-completion gnome-keyring seahorse wmctrl zenity \
 gparted gpart sshfs terminator reflector nano ntp dialog wget libnotify \
-arch-install-scripts 
+arch-install-scripts nfs-utils
 
   }
 
@@ -348,15 +348,15 @@ openvpn btsync btsync-autoconfig networkmanager-openvpn
   # CLI utils
   {
 
-yaourt --noconfirm -S --needed tree htop iotop nethogs nettop serman \
-ncdu screen smartmontools
+yaourt --noconfirm -S --needed tree htop iotop nethogs nettop \
+ncdu screen smartmontools iperf xclip
 
   }
   
     # File Systems
   {
 
-yaourt --noconfirm -S --needed dosfstools jfsutils nfs-utils \
+yaourt --noconfirm -S --needed dosfstools jfsutils \
 exfat-utils e2fsprogs btrfs-progs reiserfsprogs xfsprogs ntfs-3g
 
   }
@@ -369,19 +369,14 @@ yaourt --noconfirm -S --needed iptables squid
 
   }
   
-  # NAS
-  {
-
-yaourt --noconfirm -S --needed nfs-utils 
-
-  }
 
   # Everyday Use (Main PC)
   {
 
 yaourt --noconfirm -S --needed firefox pidgin pidgin-libnotify dropbox \
 flashplugin jre pms vidalia google-chrome onboard pkgfile redshift \
-multipath-tools-git cryptsetup easystroke
+multipath-tools-git cryptsetup easystroke xbrightness xautomation \
+xdotool
 
 
   }
@@ -546,7 +541,7 @@ yaourt --noconfirm -S --needed apache php php-apache mariadb
   # Webserver 
   {
   
-  sudo systemctl enablehttpd.service
+  sudo systemctl enable httpd.service
 
   }
 
@@ -605,7 +600,24 @@ yaourt --noconfirm -S --needed apache php php-apache mariadb
 
   sudo grub-mkconfig -o /boot/grub/grub.cfg    
  
-} 
+}
+
+# Change Shell
+{
+
+ # Change root shell
+  chsh
+   
+   # New shell = /usr/bin/zsh
+
+  
+ # Change user shell
+  su "$MYUSER" -c chsh
+	
+	# New shell = /usr/bin/zsh
+ 
+}
+
 
 # exit the chroot
 { 

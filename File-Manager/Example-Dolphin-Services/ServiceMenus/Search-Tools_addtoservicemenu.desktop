@@ -1,0 +1,59 @@
+[Desktop Entry]
+Actions=SearchHere;SearchByName;SearchByString;_SEPARATOR_;StatisticsSearchDB;UpdateSearchDB;_SEPARATOR_;ModifiedFilesHere
+Icon=/usr/share/icons/hicolor/512x512/apps/ks-search-string.png
+Type=Service
+X-KDE-Priority=TopLevel
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin,inode/directory
+X-KDE-StartupNotify=false
+X-KDE-Submenu[en_US]=Search Tools
+X-KDE-Submenu=Search Tools
+X-KDE-Submenu[es]=Herramientas de Búsqueda
+X-KDE-Submenu[x-test]=xxSearch Toolsxx
+
+[Desktop Action SearchByName]
+Exec=/usr/share/applications/Search_Tools-search-by-name.sh
+Icon=/usr/share/icons/hicolor/512x512/apps/ks-search-name.png
+Name[en_US]=Search By Name
+Name=Search By Name
+Name[es]=Búsqueda Por Nombre
+Name[x-test]=xxSearch By Namexx
+
+[Desktop Action SearchByString]
+Exec=kdesu --caption="Search By String" -d /usr/share/applications/Search_Tools-search-by-string.sh
+Icon=/usr/share/icons/hicolor/512x512/apps/ks-search-string.png
+Name[en_US]=Search By String
+Name=Search By String
+Name[es]=Búsqueda Por Palabra
+Name[x-test]=xxSearch By Stringxx
+
+[Desktop Action StatisticsSearchDB]
+Exec=/usr/share/applications/Search_Tools-statistics-search-db.sh
+Icon=/usr/share/icons/hicolor/512x512/apps/ks-search-stats.png
+Name[en_US]=Statistics Search DB
+Name=Statistics Search DB
+Name[es]=Estadisticas BD de Búsqueda
+Name[x-test]=xxStatistics Search DBxx
+
+[Desktop Action UpdateSearchDB]
+Exec=/usr/share/applications/Search_Tools-update-search-db.sh
+Icon=/usr/share/icons/hicolor/512x512/apps/ks-search-database-update.png
+Name[en_US]=Update Search DB
+Name=Update Search DB
+Name[es]=Actualizar BD de Búsqueda
+Name[x-test]=xxUpdate Search DBxx
+
+[Desktop Action SearchHere]
+Exec=kdesu --caption="Search Here" -d /usr/share/applications/Search_Tools-search-here.sh
+Icon=/usr/share/icons/hicolor/512x512/apps/ks-search-name.png
+Name[en_US]=Search Here
+Name=Search Here
+Name[es]=Búscar Aquí
+Name[x-test]=xxSearch Herexx
+
+[Desktop Action ModifiedFilesHere]
+Exec=kdesu --caption="Modified Files Here" -d /usr/share/applications/Search_Tools-modified-files-here.sh
+Icon=/usr/share/icons/hicolor/512x512/apps/ks-search-name.png
+Name[en_US]=Modified Files Here
+Name=Modified Files Here
+Name[es]=Archivos Modificados Aquí
+Name[x-test]=xxModified Files Herexx

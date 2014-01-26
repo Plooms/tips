@@ -6,8 +6,16 @@
 
 $ find . -type f -name '*.txt' -mtime +3 -exec mv {} {}_old \;
 
+# Find all dirs except DIR
+$ find  -maxdepth 1 -type d -name DIR -prune -o -exec echo {} \;
+
 # find and exclude certain directories
 sudo find . \( -path ./dir1 -o -path ./dir2* \) -prune -o -print
+
+#Example for finding & excluding
+sudo find /media/C1 \( -path /media/C1/Other -o -path /media/C1/HOME* \) -prune -o -name "*.srt"  -mtime -1 -print
+
+
 
 #----------------------------------------------------------------------
 $ find /media/Original/ -type f -name 'Metallica*' -exec rm -r {} \;

@@ -9,12 +9,17 @@ Customize interface > then just drag the speed applet to the fullscreen toolbar
 # To pause when minimized
 preferences > interface > Pause playback when minimized
 
+# To make seeking faster
+preferences > show all settings > Input/Codecs > Fast Seek 
+
+# To always display the filename instead of the metadata
+preferences > show all settings > Input/Codecs > Change title according to current media = $
+
 # To start in fullscreen
 preferences > video > fullscreen
 
 # To hide (player bar & mouse) faster
 preferences > show all settings > Video > Hide cursor and fullscreen (1 ms)
-
 
 # To change Jump length
 preferences > show all settings > Hotkey setttings > Jump sizes ( 3,3,60,9999 )

@@ -11,9 +11,9 @@
 
 
  # Set the Variables (C = Container)
- C_LOCATION='/run/media/abz/Home-Backup'
+ C_LOCATION='/media/C1/Other/ISOs'
  C_NAME='archlinux.iso'
- LOOP_DEV='loop1'
+ LOOP_DEV='loop3'
  MNT_LOCATION='/mnt/arch'
 
 
@@ -27,8 +27,8 @@
 
  # Creating the File
 {
-	
-  dd if=/dev/zero of="$C_LOCATION"/"$C_NAME" bs=1024K count=1500
+	# 7000 is best for 8 GB flash
+  dd if=/dev/zero of="$C_LOCATION"/"$C_NAME" bs=1024K count=7000
 
 }
  

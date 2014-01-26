@@ -7,22 +7,22 @@
 
  ls -1 /media/Original/ > ass
 
- # Note that if the output is corrupted wth \[330m0
- # you need to =  " unalias ls " because of the color issue
+ # Note that if the output is corrupted with \[330m0
+ # you need to (" unalias ls ") because of the color issue
 
 }
 
 # Execute echo on every line
 {
 
-  cat ass | while read LINE; do echo "kiss my $LINE"; done
+  while read LINE; do echo "kiss my $LINE"; done < ass
 
 }
 
 # Execute mkdir on every line
 {
 
-  cat ass | while read LINE; do mkdir /media/test/"$LINE"; done
+  while read LINE; do mkdir /media/test/"$LINE"; done < ass
 
 }
 

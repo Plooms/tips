@@ -3,7 +3,9 @@
 
 
 # Step 1: 
-Download the latest Arch ISO
+#Download the latest Arch ISO
+https://www.archlinux.org/download/
+
 
 # Step 2:
 # Server setup
@@ -11,6 +13,7 @@ Download the latest Arch ISO
 # Mount the ISO:
 sudo mkdir -p /mnt/archiso
 sudo mount -o loop,ro /path/to/arch.iso /mnt/archiso
+
 
 # Install the DHCP-TFTP , HTTP & NBD server
  p dnsmasq darkhttpd nbd
@@ -39,7 +42,8 @@ tftp-root=/mnt/archiso
 sudo systemctl start dnsmasq.service
 
 
-# Methods Available to install
+# Methods Available to install:  (HTTP) (NBD) (NFS)
+
 
 
 # Method 1 : (HTTP) [very easy]

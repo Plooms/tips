@@ -176,7 +176,7 @@
   MYUSER='abz'
   
   # Set The HDD Variables (in the Chroot)
-  HDD_MASTER='/dev/sda'
+  HDD_MASTER='/dev/sda1'
   
   # Set The Container Variables (in the Chroot)
   HDD_MASTER='/dev/loop3'
@@ -330,7 +330,7 @@ echo "
   {
 
 yaourt --noconfirm -S --needed zsh python2-gobject dbus git slim x11vnc \
-procmail vinagre bash-completion gnome-keyring seahorse zenity \
+procmail vinagre bash-completion gnome-keyring seahorse wmctrl zenity \
 gparted gpart sshfs terminator reflector nano ntp dialog wget libnotify \
 arch-install-scripts nfs-utils
 
@@ -376,7 +376,7 @@ yaourt --noconfirm -S --needed iptables squid
 yaourt --noconfirm -S --needed firefox pidgin pidgin-libnotify dropbox \
 flashplugin jre pms vidalia google-chrome onboard pkgfile redshift \
 multipath-tools-git cryptsetup easystroke xbrightness xautomation \
-xdotool wmctrl
+xdotool
 
 
   }

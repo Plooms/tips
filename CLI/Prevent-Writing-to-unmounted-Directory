@@ -2,6 +2,10 @@
 # Prevent access to unmounted directory
 
   
-  # When unmounted, do:
+  # When Local dir & unmounted, do:
   
   sudo chattr +i /media/unmounted-dir
+
+  # When Remote dir (e.g: NFS) & unmounted:
+
+    you are "fucked"

@@ -12,6 +12,32 @@
 
 
 
+System Settings > Application Appearance > Style > Oxygen > Configure
+#######################################################################
+[General]
+
+(check)
+(uncheck)
+(check)
+(check)
+
+Window Drag Mode = From Titlebar Menubar and toolbar
+ 
+ 
+[Scrollbars]
+
+Scrollbar width = 27px
+Top arrow button = No buttons
+Bottom arrow button = No buttons
+
+#######################################################################
+
+
+
+
+
+
+
 System Settings > Application Appearance > Fonts
 #######################################################################
 	
@@ -31,13 +57,6 @@ System Settings > Application Appearance > Fonts
 	(check) force font DPI = 96
 
 #######################################################################
-
-
-
-
-
-
-
 
 
 
@@ -239,8 +258,9 @@ System Settings > Workspace Behaviour > Screen edges
 
 [bottom left] : show dashboard
 
+# this fixes the unmaximize when moving bug
+(uncheck) maximize windows by dragging
 
-(check) maximize windows by dragging
 (check) tile windows by dragging
  
 [Activation delay] = 50 ms

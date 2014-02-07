@@ -1,11 +1,11 @@
 #!/bin/bash
-# Prevent access to unmounted directory
+# Prevent access to an unmounted directory
 
   
   # When Local dir & unmounted, do:
   
-  sudo chattr +i /media/unmounted-dir
+	sudo chattr +i /media/unmounted-dir
 
   # When Remote dir (e.g: NFS) & unmounted:
 
-    you are "fucked"
+	Go to the "Server" and issue the above commad

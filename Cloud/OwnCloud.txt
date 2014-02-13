@@ -1,0 +1,70 @@
+#!/bin/bash
+# How to install and configure OwnCloud 
+
+  p owncloud php-apache mariadb mariadb-clients libmariadbclient
+
+ 
+ 
+# Uncomment extensions in /etc/php/php.ini 
+gd.so
+intl.so
+openssl.so
+xmlrpc.so
+zip.so
+iconv.so
+mysql.so
+mysqli.so
+pdo_mysql.so
+ 
+# configure the following options for upload cap size (all same same)
+post_max_size = 1000M
+upload_max_filesize = 1000M
+
+
+
+# edit 
+n /etc/httpd/conf/httpd.conf
+
+# add the following lines
+
+LoadModule php5_module modules/libphp5.so
+Include conf/extra/php5_module.conf
+### Include /etc/httpd/conf/extra/owncloud.conf
+
+# the last line makes owncloud your primary website
+# but it's better to just symlink it somewhere inside your website
+
+ln -s /usr/share/webapps/owncloud /srv/http/owncloud
+
+# edit
+n /etc/php/php.ini
+
+# insert  /usr/share/webapps 
+# in the open_basedir line of php.ini
+
+
+
+
+# Configure mysql
+s systemctl restart mysqld
+
+s mysql_secure_installation
+  #just press enter here (blank password)
+  # enter new password & answer (Yes) for all questions
+
+  mysql -u root -p
+
+CREATE DATABASE owncloud;
+
+GRANT ALL ON owncloud.* TO 'owncloud'@'localhost' IDENTIFIED BY 'Archlinux';
+
+GRANT ALL ON owncloud.* TO 'owncloud'@'localhost.localdomain' IDENTIFIED BY 'Archlinux';
+
+exit
+
+# Done
+  sudo systemctl restart mysqld
+  sudo systemctl restarthttpd
+
+
+

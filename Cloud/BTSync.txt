@@ -1,0 +1,168 @@
+#!/bin/bash
+# Create a Central repo using BTSync
+
+
+# Install
+{ 
+
+  p btsync btsync-autoconfig
+}  
+
+# Configure
+{  
+  
+  
+  user='abz'
+
+  sudo systemctl restart btsync@"$user"
+
+  sudo nano /home/"$user"/.config/btsync/btsync.conf
+
+  # change the follwing settings
+  #  * - Name		== "ABZ - Archlinux - Router
+  #  * - storage_path	== /home/abz/.config/btsync
+  #  * - webui.login	== ""
+  #  * - webui.password	== ""
+    
+    
+  # remove "login" and "password" fields to disable credentials check
+  "webui" :
+  {
+    "listen" : "0.0.0.0:8889",    <<<<<<< delete this colon
+  }
+
+
+
+
+
+}
+  
+# Create Directories , NOTE : (On All Computers)
+{
+
+  # Home
+  sudo mkdir /home/"$user"/BTSync-Central-Repo
+  
+  
+  
+# Fix Permissions
+  sudo chmod 777 /home/"$user"/BTSync-Central-Repo
+  sudo chmod -R 777 /usr/local/bin/
+  
+  
+  ############### On the Clients Only ###############
+  ############### On the Clients Only ###############
+  # beware
+  \#   sudo rm -r /usr/local/bin/*
+  \#   sudo rm -r /usr/local/bin/.*
+  # beware
+  ############### On the Clients Only ###############
+  ############### On the Clients Only ###############
+  
+  
+
+# Start Services
+  sudo systemctl enable btsync@"$user"
+  sudo systemctl restart btsync@"$user"
+  sudo systemctl status btsync@"$user"
+
+}
+
+# Prepare the Sync Directories , NOTE : (On the Server Only)
+{
+  
+  # Sync .zshrc
+  mv /home/"$user"/.zshrc /home/"$user"/BTSync-Central-Repo/
+  ln -sf /home/"$user"/BTSync-Central-Repo/.zshrc /home/"$user"/.zshrc
+  sudo ln -sf /home/"$user"/BTSync-Central-Repo/.zshrc /root/.zshrc
+    
+    
+    
+  # Sync .nanorc
+  mv /home/"$user"/.nanorc /home/"$user"/BTSync-Central-Repo/
+  ln -sf /home/"$user"/BTSync-Central-Repo/.nanorc /home/"$user"/.nanorc
+  sudo ln -sf /home/"$user"/BTSync-Central-Repo/.nanorc /root/.nanorc
+
+
+
+  # Sync yaourtrc
+  sudo mv /etc/yaourtrc  /home/"$user"/BTSync-Central-Repo/
+  sudo ln -sf /home/"$user"/BTSync-Central-Repo/yaourtrc  /etc/yaourtrc
+  
+  
+  # Sync hosts
+  sudo mv /etc/hosts  /home/"$user"/BTSync-Central-Repo/
+  sudo ln -sf /home/"$user"/BTSync-Central-Repo/hosts  /etc/hosts
+  
+  
+  # Sync pacman.conf
+  sudo mv /etc/pacman.conf  /home/"$user"/BTSync-Central-Repo/
+  sudo ln -sf /home/"$user"/BTSync-Central-Repo/pacman.conf  /etc/pacman.conf
+
+}
+
+# Start the Sync Procedure
+{
+
+  Go to "host:8889" in your browser,
+  
+  Add the folders 
+"  
+/home/xxxx/BTSync-Central-Repo
+&
+/usr/local/bin
+"  
+  Then, Go to the next clients and add the synced folders using 
+
+  ------------------------------------------
+  / THE "READ-ONLY KEY" | # very important \
+  ------------------------------------------
+
+}
+
+# Complete the Sync Process , NOTE : (On All Clients)
+{
+
+  user='abz'
+
+  # Sync .zshrc
+  sudo rm /home/"$user"/.zshrc
+  sudo rm /root/.zshrc
+  ln -sf /home/"$user"/BTSync-Central-Repo/.zshrc /home/"$user"/.zshrc
+  sudo ln -sf /home/"$user"/BTSync-Central-Repo/.zshrc /root/.zshrc
+
+
+
+  # Sync .nanorc
+  sudo rm /home/"$user"/.nanorc
+  sudo rm /root/.nanorc
+  ln -sf /home/"$user"/BTSync-Central-Repo/.nanorc /home/"$user"/.nanorc
+  sudo ln -sf /home/"$user"/BTSync-Central-Repo/.nanorc /root/.nanorc
+
+
+
+  # Sync yaourtrc
+  sudo rm /etc/yaourtrc  
+  sudo ln -s /home/"$user"/BTSync-Central-Repo/yaourtrc /etc/yaourtrc
+
+
+  # Sync hosts
+  sudo rm /etc/hosts
+  sudo ln -s /home/"$user"/BTSync-Central-Repo/hosts /etc/hosts
+
+
+  # Sync pacman.conf
+  sudo rm /etc/pacman.conf
+  sudo ln -s /home/"$user"/BTSync-Central-Repo/pacman.conf /etc/pacman.conf
+
+}
+
+# Final Note
+{
+  
+	#  If the Server died and you want to recreate the Sync,
+	#  After doing all the neccessary steps, you need to delete the 
+	#  share from all the clients and re-add the shares with the 
+	#  new key from the server.
+  
+	#  This is because we used the "READ-Only" key

@@ -1,0 +1,6 @@
+#!/bin/bash
+# Give answer to terminal automatically
+
+
+# Example (Show Pacman upgrade list without actually upgrading)
+  echo "n" | yaourt -Syu

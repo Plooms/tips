@@ -1,5 +1,0 @@
-#!/bin/bash
-# Find out the process that is preventing an unmount
-
-
- fuser -fvm /media/xxx 

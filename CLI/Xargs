@@ -1,5 +1,0 @@
-#!/bin/bash
-# Use xargs
-
-# To delete on every occurance
-find tmp -maxdepth 1 -name '*.mp3' -maxdepth 1 | xargs rm

@@ -1,5 +1,0 @@
- #!/bin/bash
-# How to export your environment variables through ssh sessions
- # set in /etc/profile
-
- source ~/.bashrc

@@ -1,9 +1,0 @@
-#!/bin/bash
-# How to create a move file "Sorted & Fresh"
-
- 
- # Create the file from which 'ln2tb' will read & generate the move file
-  
-  unalias ls ; ls -1 /media/Original/ > ~/.shows
-
- # open ln2tb and select multiple shows  && enjoy :) 

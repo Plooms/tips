@@ -1,9 +1,0 @@
-#!/bin/bash
-# Create a file with a predetermined size
-
-  
-  # Print all columns
-    awk '{ print $0 }' /etc/passwd
-    
-  # Print all columns and attach ("ass-") to the start and the end
-    awk '{ print "ass-" $0 "-ass" }' /etc/passwd

@@ -1,0 +1,6 @@
+#!/bin/bash
+# Show the Delete option in Dolphin Right-click
+
+
+
+ Settings >> Configure Dolphin >> Services >> Delete

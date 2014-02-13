@@ -1,0 +1,20 @@
+#!/bin/bash
+
+p hdparm
+
+# Read test (safe to data)
+
+sudo hdparm -tT /dev/sdXX
+
+# or (be careful)
+
+  # Create a file named 'ass' = 1GB   "Choose either zero or urandom"
+    
+    # Write test
+    dd if=/dev/zero of=/mnt/Original/ass bs=1G count=10
+    
+	
+	# Read test
+	dd if=/mnt/Original/ass of=/dev/null
+	
+	

@@ -1,0 +1,17 @@
+#!/bin/bash
+# SMART info
+
+
+	# Install
+	p smartmontools
+ 
+ 
+	# Test
+	sudo smartctl -t short /dev/xxx
+	or
+	sudo smartctl -t long /dev/xxx
+
+	# Results
+	sudo smartctl -H /dev/xxx		# Errors
+
+	sudo smartctl -a /dev/xxx		# General Info

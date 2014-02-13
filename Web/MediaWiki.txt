@@ -1,0 +1,134 @@
+#!/bin/bash
+# Installing MediaWiki
+
+
+#######################################################################
+
+# Install packages
+	
+ p apache php-apache php-gd php-pear php-intl php-xcache mariadb \
+ mariadb-clients libmariadbclient mediawiki
+
+
+#######################################################################
+
+# Configuring MariaDB for MediaWiki
+{
+
+	sudo systemctl restart mysqld
+	
+	sudo systemctl enable mysqld
+
+	mysql_secure_installation	# Choose Y for default options
+	
+	mysql -u root -p
+
+	# In MySQL console ,   MariaDB [(none)]>
+	
+	CREATE DATABASE mediawiki;
+
+	# NOTE: change 'password' to the mysql root user password
+	
+	GRANT ALL ON mediawiki.* TO 'root'@'localhost' IDENTIFIED BY 'password';
+		
+	exit
+
+}
+
+
+#######################################################################
+
+# Configuring php for mediawiki
+{
+	
+	n /etc/php/php.ini
+	
+	
+	# Find the line open_basedir & Add the webapps directory
+	
+	open_basedir = xxx:/usr/share/webapps/
+
+	
+	# Make sure these are uncommented ; and add them if they dont exist
+	extension=curl.so
+	extension=gd.so
+	extension=gettext.so
+	extension=iconv.so
+	extension=intl.so
+	extension=mysqli.so
+	extension=mysql.so
+	extension=openssl.so
+	extension=pdo_mysql.so
+	extension=xmlrpc.so
+	extension=zip.so
+	extension=ixed.5.3
+	extension=uploadprogress.so
+	extension=xcache.so
+
+	# configure the following options for upload cap size (all same same)
+	post_max_size = 1000M
+	upload_max_filesize = 1000M
+
+	
+	# Execute
+	sudo pecl install uploadprogress
+
+
+}	
+	
+	
+#######################################################################
+	
+# Configuring Apache for mediawiki
+{
+	
+	n /etc/httpd/conf/httpd.conf
+	
+	
+	# If your webserver is dedicated to mediawiki , then Change
+	
+	DocumentRoot "/srv/http" >> DocumentRoot "/usr/share/webapps/mediawiki"
+
+	Directory "/srv/http"  >>  Directory "/usr/share/webapps/mediawiki"
+
+
+	# Add to the end of  /httpd.conf to run php
+	
+	LoadModule php5_module modules/libphp5.so
+	Include conf/extra/php5_module.conf
+
+}
+
+
+
+#######################################################################
+
+# Starting Services
+
+ sudo systemctl enable mysqld
+ sudo systemctl enablehttpd
+ sudo systemctl restart mysqld
+ sudo systemctl restarthttpd
+
+
+
+#######################################################################
+
+# Configuring mediawiki Options
+
+	Database name = "mediawiki"
+	
+	Database user = "root"
+	
+	Database password = "the root user mysql password"
+	
+	
+
+#######################################################################
+	
+# Resources
+
+https://wiki.archlinux.org/index.php/Mediawiki
+https://wiki.archlinux.org/index.php/Apache
+https://wiki.archlinux.org/index.php/MySQL
+https://wiki.archlinux.org/index.php/PHP

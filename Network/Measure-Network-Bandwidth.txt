@@ -1,0 +1,12 @@
+#!/bin/bash
+# Measure Network bandwidth between two PCs
+
+
+  p iperf
+  
+  
+  # Server
+  sudo iperf -s
+  
+  # Client
+  sudo iperf -c 10.0.0.3 -d

@@ -1,0 +1,19 @@
+#!/bin/bash
+ # Use reflector to choose best mirrors
+
+ # Install
+  p reflector
+ 
+
+ sudo pacman -Sc && sudo pacman-optimize
+ sudo cp -vf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+ sudo mv /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
+ sudo cp -vf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.all
+ sudo sed '/^#\S/ s|#||' -i /etc/pacman.d/mirrorlist
+ sudo reflector --verbose -l 30 --sort rate --save /etc/pacman.d/mirrorlist
+
+ # To recreate the mirros (do over)
+  
+  sudo mv /etc/pacman.d/mirrorlist.all /etc/pacman.d/mirrorlist
+  sudo sed '/^#\S/ s|#||' -i /etc/pacman.d/mirrorlist
+  sudo reflector --verbose -l 30 --sort rate --save /etc/pacman.d/mirrorlist

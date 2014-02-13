@@ -1,0 +1,10 @@
+#!/bin/bash
+# How to join multipart videos together
+
+
+ p mencoder
+
+
+ mencoder -oac copy -ovc copy -idx -o output.avi file1.avi file2.avi
+ 
+ 

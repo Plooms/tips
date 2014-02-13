@@ -1,0 +1,176 @@
+#!/bin/bash
+# mdadm commands
+
+
+# Installation
+{
+
+  sudo modprobe dm-mod
+
+}
+
+# Readiyng the disks
+{
+  
+   #Does not work with GPT tables
+  sudo cfdisk /dev/sdXX
+  
+   # Works with GPT
+  sudo gparted
+  
+ # create a partition
+ # give it a type of Linux-Raid-auto-detect "fd" 
+ # so just write fd when it asks for a number
+
+ # NOTE: be sure to refer to the "Replicate partition tables" 
+ # tip & trick to mass partition
+
+}
+
+# Create a raid
+{
+
+  sudo mdadm --create /dev/md0 --level=5 --raid-devices=4 /dev/sd[abcd]1
+
+ # level= 0-1-4-5-6-linear
+ # If you want to avoid the initial resync with 
+ # new hard drives add the --assume-clean flag
+
+}
+
+# Monitor progress by refreshing 10 times {.1} a second
+{
+
+  sudo watch -n .1 cat /proc/mdstat
+  # or
+  sudo watch -n .1 mdadm --detail /dev/md0
+
+}
+
+# Add a spare
+{
+
+  sudo mdadm --add /dev/md0 /dev/sdXX
+
+}
+
+# Grow Raid array {Does not work for raid 0}
+{
+
+  # put a spare then enter the number of all disks plus the new one, so growing from 3 to 4
+
+  sudo mdadm --grow -n 4 /dev/md1
+
+}
+
+# Get mdadm details
+{
+
+  sudo mdadm --detail /dev/md0
+
+}
+
+# Update configuration file
+{
+
+  sudo mdadm --examine --scan > /etc/mdadm.conf
+
+}
+
+# Assemble the array if not auto assembled
+{
+
+  sudo mdadm --assemble --scan
+
+}
+
+# Mounting from a Live CD {Assembling}
+{
+
+  sudo mdadm --assemble /dev/md0 /dev/sda3 /dev/sdb3 /dev/sdc3
+
+}
+
+# Fail a device
+{
+
+  sudo mdadm -f /dev/md0 /dev/sdXX
+
+}
+
+# Remove a device
+{
+
+  sudo mdadm -r /dev/md0 /dev/sdXX
+
+}
+
+# Remove a device from array
+{
+
+ # Refer to above { fail it , remove it }
+ # then
+
+  sudo mdadm --zero-superblock /dev/sdXX
+
+ # NOTE: if you reuse the removed disk in another setup without zeroing the superblock 
+ # you will LOSE all your data next boot 
+
+}
+
+# Recover from a missing drive
+{
+
+  sudo mdadm --manage /dev/md0 --run
+  
+  # then add a new disk to start rebuilding the array
+  sudo mdadm --add /dev/md0 /dev/sdXX
+  
+
+
+}
+
+# Stop using an array:
+{
+
+ # Umount target array
+ # Stop the array with: sudo mdadm --stop /dev/md0
+ # Repeat the three commands above {fail,remove,remove-from-array}.
+ # Remove the corresponding line from /etc/mdadm.conf
+
+}
+
+# Test read and write speed
+{
+
+  # Write
+
+  dd if=/dev/zero of=/mnt/?/ass bs=1G count=5
+
+  # Read
+
+  dd if=testfile of=/dev/null
+
+}
+
+
+  # Final Note
+  
+ 1: Add the "dm_mod" module to the "MODULES" list in "/etc/mkinitcpio.conf"
+ 2: Add the "mdadm_udev" & "lvm2" hooks to the "HOOKS" list in "/etc/mkinitcpio.conf" after udev
+ 3: mkinitcpio -p linux
+
+
+# Speed up resyncing and building the array
+{
+
+  # See  http://goo.gl/aaOU4   {HowTo: Speed Up Linux Software Raid Building And Re-syncing}
+
+}
+
+
+#######################################################################
+	
+# Resources
+
+https://wiki.archlinux.org/index.php/Mdadm

@@ -1,0 +1,11 @@
+#!/bin/bash
+# Example of how to use it
+
+{1,2,3}
+
+/media/TB1/{Finished,Temp,Downloads}/*/Movies
+
+
+# mkdir from A to Z
+
+ mkdir {a..z}

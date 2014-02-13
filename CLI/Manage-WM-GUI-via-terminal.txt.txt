@@ -1,0 +1,8 @@
+#!/bin/bash
+# Control your window manager from command line
+
+# install
+  p wmctrl
+  
+# Close program
+  wmctrl -c smplayer

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+
+#Files
+{
+
+ ls -l | grep ^- | wc -l
+
+}
+
+#Directories
+{
+ 
+ ls -l | grep ^d | wc -l
+
+}
+
+#SymLinks
+{
+ # To find symlinks and where they point to
+ find . -type l -exec ls -lad {} \;|grep C1
+ 
+ # count
+  find . -type l -exec ls -lad {} \;| wc -l
+
+
+}

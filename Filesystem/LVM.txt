@@ -182,7 +182,7 @@ LV_NAME='Media'
 
 
 #######################################################################
-	
+
 # Resources
 
 https://wiki.archlinux.org/index.php/Lvm

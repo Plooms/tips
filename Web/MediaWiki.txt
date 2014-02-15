@@ -19,7 +19,8 @@
 	
 	sudo systemctl enable mysqld
 
-	mysql_secure_installation	# Choose Y for default options
+	# Choose Y for default options
+	mysql_secure_installation
 	
 	mysql -u root -p
 

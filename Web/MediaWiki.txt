@@ -107,9 +107,9 @@
 # Starting Services
 
  sudo systemctl enable mysqld
- sudo systemctl enablehttpd
+ sudo systemctl enable httpd
  sudo systemctl restart mysqld
- sudo systemctl restarthttpd
+ sudo systemctl restart httpd
 
 
 

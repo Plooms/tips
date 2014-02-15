@@ -378,6 +378,8 @@ flashplugin jre pms vidalia google-chrome onboard pkgfile redshift \
 multipath-tools-git cryptsetup easystroke xbrightness xautomation \
 xdotool
 
+# xte = xautomation
+
 
   }
 

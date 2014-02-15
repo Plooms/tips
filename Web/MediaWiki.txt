@@ -115,7 +115,7 @@
 
 #######################################################################
 
-# Configuring mediawiki Options
+# Configuring mediawiki Options (from the web interface)
 
 	Database name = "mediawiki"
 	

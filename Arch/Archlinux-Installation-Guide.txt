@@ -330,9 +330,9 @@ echo "
   {
 
 yaourt --noconfirm -S --needed zsh python2-gobject dbus git slim x11vnc \
-procmail vinagre bash-completion gnome-keyring seahorse wmctrl zenity \
+procmail bash-completion gnome-keyring seahorse wmctrl zenity \
 gparted gpart sshfs terminator reflector nano ntp dialog wget libnotify \
-arch-install-scripts nfs-utils
+arch-install-scripts nfs-utils kdenetwork-krdc x2goserver x2goclient
 
   }
 

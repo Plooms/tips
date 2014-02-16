@@ -27,9 +27,13 @@
 
  # Creating the File
 {
+	
+	# 7000 is best for 8 GB flash (fallocate is faster than dd):
+  fallocate -l 7GB -o 1024 "$C_LOCATION"/"$C_NAME"
+	
 	# 7000 is best for 8 GB flash
   dd if=/dev/zero of="$C_LOCATION"/"$C_NAME" bs=1024K count=7000
-
+	
 }
  
  

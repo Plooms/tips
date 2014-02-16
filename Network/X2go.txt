@@ -11,16 +11,18 @@
  sudo x2godbadmin --createdb
 
 # Start the service in all servers
-sudo systemctl restart x2goserver.service
-sudo systemctl enable x2goserver.service
+ sudo systemctl restart x2goserver.service
+ sudo systemctl enable x2goserver.service
 
 # Start the client
-x2goclient
+ x2goclient
 
 
+
+
+
+#######################################################################
+	
 # Resources
-
+ 
 https://wiki.archlinux.org/index.php/X2Go
-
-
-

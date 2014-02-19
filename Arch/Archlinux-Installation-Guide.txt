@@ -427,6 +427,7 @@ yaourt --noconfirm -S --needed ecryptfs-utils encfs truecrypt
   {
 
 yaourt --noconfirm -S --needed virtualbox virtualbox-host-modules \
+virtualbox-guest-iso virtualbox-guest-utils virtualbox-guest-modules \
 libvirt virt-manager
 
   }

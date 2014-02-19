@@ -1,89 +1,91 @@
 #!/bin/bash
-# Install Archlinux from the newtork
-
-
-# Step 1: 
-#Download the latest Arch ISO
-https://www.archlinux.org/download/
-
-
-# Step 2:
-# Server setup
-
-# Mount the ISO:
-sudo mkdir -p /mnt/archiso
-sudo mount -o loop,ro /path/to/arch.iso /mnt/archiso
-
-
-# Install the DHCP-TFTP , HTTP & NBD server
- p dnsmasq darkhttpd nbd
-
-
-# Know your ethernet name
-ip link show
-
-
-# Configure dnsmasq
-sudo nano /etc/dnsmasq.conf
-
-port=0
-# change me = (ethernet name)
-interface=enp2s0
-bind-interfaces
-# change me =  (ip address)
-dhcp-range=10.0.0.120,10.0.0.121,12h
-dhcp-boot=/arch/boot/syslinux/lpxelinux.0
-dhcp-option-force=209,boot/syslinux/archiso.cfg
-dhcp-option-force=210,/arch/
-enable-tftp
-tftp-root=/mnt/archiso
-
-# Start the DHCP-TFTP server
-sudo systemctl start dnsmasq.service
-
-
-# Methods Available to install:  (HTTP) (NBD) (NFS)
+# Move your system to a VM
 
 
 
-# Method 1 : (HTTP) [very easy]
+# Create the container 
 
-	# Start the HTTP server
-	sudo darkhttpd /mnt/archiso
+	# Considering that you need the combined size of /root,/home,/us/lo/bin,webapps)
 
-
-
-# Method 2 : (NBD) [easy]
-
-	sudo nano /etc/nbd-server/config
-
-# Add to the end of the file
-[generic]
-[archiso]
-    readonly = true
-    exportname = /path/to/arch.iso
-    
-    # Start the NBD server
-	sudo systemctl start nbd.service
+	sudo mkdir /media/Backup
+	fallocate -l 10GB -o 1024 /media/Backup/backup.img
 
 
+# Setup the container
+
+	sudo losetup /dev/loop5 /media/Backup/backup.img
 
 
-# Method 3 : (NFS) [hard'ish]
-
-	sudo mkdir -p /run/archiso/bootmnt
+# Partition the container
 	
-	sudo mount -R /mnt/archiso /run/archiso/bootmnt
+	# Slap a partition table on it (msdos) and a filesystem (e.g."ext4")
+	sudo gparted /dev/loop5
+
+
+# Transfer the system
+
+	sudo mkdir /mnt/Virtual
+	sudo mount /dev/loop5p1 /mnt/Virtual
+	sudo rsync -aAXv /* /mnt/Virtual --exclude={'/dev/*','/proc/*','/sys/*','/tmp/*','/run/*','/mnt/*','/media/*','/lost+found','/home/*/.gvfs'}
+
+
+# Convert the container to a compatible format
+
+	cd /media/Backup
+	sudo VBoxManage convertfromraw --format VMDK backup.img backup.vmdk
+
+
+# Detach the container & clean up
+
+	sudo umount /mnt/Virtual
+	sudo losetup -d /dev/loop5p1
+	sudo losetup -d /dev/loop5
+	sudo rm /media/Backup/backup.img
+
+
+# Chroot and reinstall the bootloader (inside Virtualbox)
+
+	# Boot a Live CD (VM) and mount the vmdk in Virtualbox
+
+	sudo mount /dev/sda1 /mnt
+	sudo arch-chroot /mnt
+
+
+# Install Grub
+
+	sudo grub-install /dev/sda
+	sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+
+# Adjust the fstab
+
+/dev/sda1    /   ext4   defaults,noatime      0   1
+
+
+# Disable Xorg-related files
+
+	sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf.bak
+	sudo mv /etc/X11/xorg.conf.d/10-monitor /etc/X11/xorg.conf.d/10-monitor.bak
+
+
+# Re-generate the initramfs image
 	
-	sudo nano /etc/exports
-
-# add to the end of the file
-/run/archiso/bootmnt 10.0.0.0/24(ro,no_subtree_check)
+	sudo mkinitcpio -p linux
 
 
-	sudo exportfs -r -a -v
+# Exit the chroot
+
+	exit
+
+
+# Shutdown the VM
+
+	poweroff
 
 
 
-# Reboot the client & choose PXE boot
-# Now use the Arch Install Guide to start your awesome installation
+#######################################################################
+	
+# Resources
+
+https://wiki.archlinux.org/index.php/Moving_an_existing_install_into_%28or_out_of%29_a_virtual_machine

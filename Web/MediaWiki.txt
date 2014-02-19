@@ -126,6 +126,21 @@
 	
 
 #######################################################################
+
+# To import text files into Mediawiki
+
+# Copy the "importTextFile.php" > "/mediawiki/maintenance/"
+
+# Usage: 
+
+for i in /path/to/textfile/to/import/*
+do
+php /path/to/importTextFile.php "$i"
+done
+
+
+
+#######################################################################
 	
 # Resources
 

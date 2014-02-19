@@ -576,7 +576,14 @@ yaourt --noconfirm -S --needed apache php php-apache mariadb
   sudo systemctl enable mdadm.service
 
   }
-  
+
+  # Virtualbox Client
+  {
+
+  sudo systemctl enable vboxservice.service
+
+  }
+
   }
 
 }

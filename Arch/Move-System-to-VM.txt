@@ -63,9 +63,9 @@
 	sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 
-# Adjust the fstab
+# Adjust the fstab (like this)
 
-/dev/sda1    /   ext4   defaults,noatime      0   1
+/dev/sda1    /   ext4   defaults,relatime      0   1
 
 
 # Disable Xorg-related files

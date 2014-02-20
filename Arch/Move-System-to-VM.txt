@@ -26,7 +26,7 @@
 
 	sudo mkdir /mnt/Virtual
 	sudo mount /dev/loop5p1 /mnt/Virtual
-	sudo rsync -aAXv /* /mnt/Virtual --exclude={'/dev/*','/proc/*','/sys/*','/tmp/*','/run/*','/mnt/*','/media/*','/lost+found','/home/*/.gvfs'}
+	sudo rsync -avhAXP /* /mnt/Virtual --exclude={'/dev/*','/proc/*','/sys/*','/tmp/*','/run/*','/mnt/*/*','/media/*/*','/lost+found','/home/*/.gvfs'}
 
 
 # Convert the container to a compatible format
@@ -41,6 +41,7 @@
 	sudo losetup -d /dev/loop5p1
 	sudo losetup -d /dev/loop5
 	sudo rm /media/Backup/backup.img
+	sudo rmdir /media/Backup
 
 
 # Chroot and reinstall the bootloader (inside Virtualbox)

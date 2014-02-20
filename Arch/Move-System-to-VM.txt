@@ -89,6 +89,9 @@
 	poweroff
 
 
+# After rebooting into the VM
+p virtualbox-guest-utils
+sce vboxservice
 
 #######################################################################
 	

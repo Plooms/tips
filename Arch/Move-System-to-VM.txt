@@ -33,7 +33,7 @@
 
 	cd /media/Backup
 	sudo VBoxManage convertfromraw --format VMDK backup.img backup.vmdk
-
+	sudo chmod 777 backup.vmdk
 
 # Detach the container & clean up
 
@@ -42,9 +42,14 @@
 	sudo losetup -d /dev/loop5
 	sudo rm /media/Backup/backup.img
 	sudo rmdir /media/Backup
+	
+	
+	
+	
+#######################################################################
+# NOTE: '(Inside Virtualbox)'
 
-
-# Chroot and reinstall the bootloader (inside Virtualbox)
+# Chroot and reinstall the bootloader
 
 	# Boot a Live CD (VM) and mount the vmdk in Virtualbox
 

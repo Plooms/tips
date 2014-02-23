@@ -8,7 +8,7 @@
 	# Considering that you need the combined size of /root,/home,/us/lo/bin,webapps)
 
 	sudo mkdir /media/Backup
-	fallocate -l 10GB -o 1024 /media/Backup/backup.img
+	sudo fallocate -l 10GB -o 1024 /media/Backup/backup.img
 
 
 # Setup the container

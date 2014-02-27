@@ -1,5 +1,34 @@
 #!/bin/bash
-# Backup and Restore Mariadb-MySQL databases
+# Install , Backup and Restore Mariadb-MySQL databases
+
+# Install
+ p mariadb mariadb-clients libmariadbclient
+
+ 
+ # Create Database
+ 
+	sudo systemctl restart mysqld
+	
+	sudo systemctl enable mysqld
+
+	
+	mysql_secure_installation	
+	# Choose Y for default options
+	
+	mysql -u root -p
+
+	# In MySQL console ,   MariaDB [(none)]>
+	
+	CREATE DATABASE db_name;
+
+	# NOTE: change 'password' to the mysql root user password
+	
+	GRANT ALL ON db_name.* TO 'root'@'localhost' IDENTIFIED BY 'password';
+		
+	exit
+
+########################################################################
+
 
 
 #Back up From the Command Line (using mysqldump)

@@ -76,5 +76,11 @@ VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTE", "$DEF");
 EOF
 
  
-# Query example
-select * from table_name where Size='1000' ;
+# Query examples
+
+	select * from table_name where Size='1000' ;
+	select * from table_name order by column_name;
+	# search for files beginning with ASS
+	select * from table_name where column_name LIKE "ASS%"; 
+	# search for files containing ASS
+	select * from table_name where column_name LIKE "%ASS%"; 

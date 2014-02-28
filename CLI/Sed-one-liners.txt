@@ -3,10 +3,14 @@
 
 # Remember -i replaces in place , without -i it outputs it to terminal
  
- 
+
  # Search for pattern & replace it with pattern2
 {
  sed -i 's/pattern/pattern2/g' file_name
+} 
+ # Delete empty & whitespace lines
+{
+ sed -i '/^\s*$/d' file_name
 } 
  # Display specific lines (100 & 200)
 {

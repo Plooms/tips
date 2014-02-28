@@ -14,7 +14,7 @@
 
 
 
- # Create Database
+# Create Database
 
 	# In MySQL console ,   MariaDB [(none)]>
 	
@@ -24,11 +24,11 @@
 	GRANT ALL ON db_name.* TO 'root'@'localhost' IDENTIFIED BY 'password';
  
  
- # Switch to the new database 
+# Switch to the new database 
 	USE db_name;
 
 
- # Create a Table
+# Create a Table
   CREATE TABLE IF NOT EXISTS table_name (
      Movie_name			varchar(200) 	NOT NULL,
      Size				int(500)	 	DEFAULT NULL, 
@@ -42,79 +42,39 @@
          
          
          
- # Print the columns of our new table
+# Print the columns of our new table
  show columns in table_name;
  
  
- # Insert data to table
+# Insert data to table
  INSERT INTO table_name 
  (Movie_name,Size,Resolution_width,Resolution_height,Watched,Notes) 
  VALUES ($Movie_name,$Size,$Resolution_width,$Resolution_height,$Watched,$Notes);
  
  
- # View records and entries
+# View records and entries
  SELECT * FROM table_name;
  
  
- # Delete Tables
+# Delete Tables
  DROP TABLE table_name;
  
  
- # Show tables in database
+# Show tables in database
  SHOW tables;
  
  
- # Execute commands from the terminal
+# Execute commands from the terminal
  mysql -u root --password='pass' --database="db_name" --execute="select * from table_name;"
  
  
  
+# Enter data from a script
+ mysql --user=root --password='pass' db_name << EOF
+INSERT INTO table_name (Movie_name,Size,Resolution_width,Resolution_height,Watched,Notes,Definition) 
+VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTE", "$DEF");
+EOF
+
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+# Query example
+select * from table_name where Size='1000'

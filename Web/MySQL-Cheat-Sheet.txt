@@ -47,10 +47,16 @@
  
  
 # Insert data to table
- INSERT INTO table_name 
- (Movie_name,Size,Resolution_width,Resolution_height,Watched,Notes) 
- VALUES ("$Movie_name","$Size","$Resolution_width","$Resolution_height","$Watched","$Notes");
- 
+INSERT INTO table_name (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition) 
+VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTES", "$DEF")
+ON DUPLICATE KEY UPDATE 
+    Size_MB = "$SIZE",
+    ResWidth = "$RES1",
+    ResHeight = "$RES2",
+    Watched = "$WATCHED",
+    Notes = "$NOTES",
+    Definition = "$DEF";
+
  
 # View records and entries
  SELECT * FROM table_name;
@@ -70,9 +76,16 @@
  
  
 # Enter data from a script
- mysql --user=root --password='pass' db_name << EOF
-INSERT INTO table_name (Movie_name,Size,Resolution_width,Resolution_height,Watched,Notes,Definition) 
-VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTE", "$DEF");
+mysql --user=root --password="$DB_PASSWORD" movies << EOF
+INSERT INTO movies (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition) 
+VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTES", "$DEF")
+ON DUPLICATE KEY UPDATE 
+    Size_MB = "$SIZE",
+    ResWidth = "$RES1",
+    ResHeight = "$RES2",
+    Watched = "$WATCHED",
+    Notes = "$NOTES",
+    Definition = "$DEF";
 EOF
 
  
@@ -80,7 +93,9 @@ EOF
 
 	select * from table_name where Size='1000' ;
 	select * from table_name order by column_name;
-	# search for files beginning with ASS
-	select * from table_name where column_name LIKE "ASS%"; 
+	
+	# search for files beginning with ASS ( Use an ' not " to make it work)
+	select * from table_name where column_name LIKE 'ASS%'; 
+	
 	# search for files containing ASS
-	select * from table_name where column_name LIKE "%ASS%"; 
+	select * from table_name where column_name LIKE '%ASS%'; 

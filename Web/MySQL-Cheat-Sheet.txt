@@ -60,16 +60,20 @@ ON DUPLICATE KEY UPDATE
  
 # View records and entries
  SELECT * FROM table_name;
- 
- 
+
+
 # Delete Tables
  DROP TABLE table_name;
- 
- 
+
+
 # Show tables in database
  SHOW tables;
- 
- 
+
+
+# Alter (change) tables in database
+ ALTER TABLE table_name MODIFY column_name column_type(180);
+
+
 # Execute commands from the terminal
  mysql -u root --password='pass' --database="db_name" --execute="select * from table_name;"
  

@@ -6,6 +6,9 @@
 # To add speed bar to player toolbar
 Customize interface > then just drag the speed applet to the fullscreen toolbar
 
+# To make audio louder
+preferences > Audio > Audio gain (2.00)
+
 # To pause when minimized
 preferences > interface > Pause playback when minimized
 

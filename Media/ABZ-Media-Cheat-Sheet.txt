@@ -4,7 +4,7 @@
 
 
 # To Create Hardlinks for the Clean Shows folder (no .nfo, .tbn ) etc...
-sudo rsync -iavuhHP --min-size=25M --link-dest=/media/C1/Shows \
+sudo rsync -iavuhHP --del --min-size=25M --link-dest=/media/C1/Shows \
 /media/C1/Shows/ /media/C1/Other/Shows-clean/
 
 

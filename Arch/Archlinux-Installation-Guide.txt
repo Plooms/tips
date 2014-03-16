@@ -342,7 +342,7 @@ nfs-utils kdenetwork-krdc x2goserver x2goclient
 
 yaourt --noconfirm -S --needed networkmanager network-manager-applet \
 networkmanager-pptp kdeplasma-applets-networkmanagement \
-openvpn btsync btsync-autoconfig networkmanager-openvpn
+openvpn btsync btsync-autoconfig networkmanager-openvpn sshuttle
 
   }
 

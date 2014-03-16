@@ -375,7 +375,7 @@ yaourt --noconfirm -S --needed iptables squid
   {
 
 yaourt --noconfirm -S --needed firefox pidgin pidgin-libnotify dropbox \
-flashplugin jre pms vidalia google-chrome onboard pkgfile redshift \
+flashplugin jre vidalia google-chrome onboard pkgfile redshift \
 multipath-tools-git cryptsetup easystroke xbrightness xautomation \
 xdotool
 
@@ -466,7 +466,7 @@ gnome-themes-standard
   # Media
   {
 
-yaourt --noconfirm -S --needed smplayer2 vlc xbmc lsb-release
+yaourt --noconfirm -S --needed vlc xbmc lsb-release pms
 
   }
 

@@ -6,11 +6,14 @@
 # To add speed bar to player toolbar
 Customize interface > then just drag the speed applet to the fullscreen toolbar
 
-# To make audio louder
-preferences > Audio > Audio gain (2.00)
-
 # To pause when minimized
 preferences > interface > Pause playback when minimized
+
+# To make audio louder
+preferences > show all settings > Audio > Audio gain (2.00)
+
+# To make english the default language
+preferences > show all settings > Input/Codecs > <Audio|Subtitle> Language : en,eng,us
 
 # To make seeking faster
 preferences > show all settings > Input/Codecs > Fast Seek 

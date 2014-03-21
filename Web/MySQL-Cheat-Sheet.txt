@@ -66,6 +66,10 @@ ON DUPLICATE KEY UPDATE
  DROP TABLE table_name;
 
 
+# Show all databases
+ SHOW databases;
+
+
 # Show tables in database
  SHOW tables;
 

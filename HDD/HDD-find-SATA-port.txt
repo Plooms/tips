@@ -1,0 +1,12 @@
+#!/bin/bash
+# Find the HDD sata port
+
+# To match the logical drive (/dev/sd*) to a physical port, 
+# use /sys/block/dev/sd*/device. It is a symlink whose path contains 
+# the SATA port used. For example:
+
+ls -l /sys/block/sdb/device
+
+>/sys/block/sdb/device -> ../../../1:0:0:0/
+
+which means it is (SATA Port 1)

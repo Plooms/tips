@@ -2,18 +2,20 @@
 # GlusterFS tips and trick and caveats
 
 
-# When adding a volumem & it complains about 
+# When Getting this error: 
 # (is not in 'Peer in Cluster' state)
 
 1: sudo gluster peer detach <hostname|ip>
-2: sudo gluster peer probe <hostname|ip>
-3: Add all the Servers to the /etc/hosts file in all Servers
 
-192.168.0.11  gluster1
-192.168.0.12  gluster2
-192.168.0.13  gluster3
-192.168.0.14  gluster4
+2: Add all the Servers to the /etc/hosts file in all Servers
 
+192.168.0.11  S1 S1
+192.168.0.12  S2 S2
+192.168.0.13  S3 S3
+192.168.0.14  S4 S4
+
+# Note: using hostnames is better
+3:sudo gluster peer probe <hostname|ip> 
 
 4: wait for the motherfucker to add the peer to cluster , 
 	or else you will get the dreaded error (Peer not in Cluster)

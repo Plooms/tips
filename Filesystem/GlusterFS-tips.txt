@@ -23,3 +23,10 @@
 5: Make sure the peer was added correctly by 
 	issuing "sudo gluster peer status" and getting 
 	(Peer in Cluster (connected))
+
+
+
+#######################################################################
+
+# Resources
+http://serverfault.com/questions/531359/why-cant-i-create-this-gluster-volume

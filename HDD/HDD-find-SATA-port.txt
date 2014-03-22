@@ -10,3 +10,6 @@ ls -l /sys/block/sdb/device
 >/sys/block/sdb/device -> ../../../1:0:0:0/
 
 which means it is (SATA Port 1)
+ 
+# To do it in the opposite direction, use
+ ls /sys/bus/scsi/devices/*/block

@@ -29,4 +29,7 @@
 #######################################################################
 
 # Resources
+
 http://serverfault.com/questions/531359/why-cant-i-create-this-gluster-volume
+https://bugzilla.redhat.com/show_bug.cgi?id=1055928
+http://gluster.org/community/documentation/index.php/Gluster_3.2:_Adding_Servers_to_Trusted_Storage_Pool

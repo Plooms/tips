@@ -165,8 +165,15 @@
 # Speed up resyncing and building the array
 {
 
+  #To increase speed, enter:
+
+  su -c "echo 50000 > /proc/sys/dev/raid/speed_limit_min"
+  #OR
+  sudo sysctl -w dev.raid.speed_limit_min=50000
+
+
   # See  http://goo.gl/aaOU4   
-  # {HowTo: Speed Up Linux Software Raid Building And Re-syncing}
+  #(Title: 5 tips to Speed Up Linux Software Raid Building And Re-syncing)
 
 }
 

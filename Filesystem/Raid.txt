@@ -165,7 +165,8 @@
 # Speed up resyncing and building the array
 {
 
-  # See  http://goo.gl/aaOU4   {HowTo: Speed Up Linux Software Raid Building And Re-syncing}
+  # See  http://goo.gl/aaOU4   
+  # {HowTo: Speed Up Linux Software Raid Building And Re-syncing}
 
 }
 

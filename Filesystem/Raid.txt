@@ -47,19 +47,20 @@
 
 }
 
-# Add a spare
+# Add a spare or new disk (needed before growing)
 {
 
-  sudo mdadm --add /dev/md0 /dev/sdXX
+  sudo mdadm --add /dev/md0 /dev/sdXX /dev/sdXX
 
 }
 
 # Grow Raid array {Does not work for raid 0}
 {
 
-  # put a spare then enter the number of all disks plus the new one, so growing from 3 to 4
+  # put a spare or new disk then enter the number of all disks,
+  # plus the new one, so growing from 3 to 5
 
-  sudo mdadm --grow -n 4 /dev/md1
+  sudo mdadm --grow -n 5 /dev/md1
 
 }
 

@@ -1,7 +1,10 @@
 #!/bin/bash
 # How to find files in Linux using 'find'
 
-# Finding all text files in the current directory created more than 3 days ago,
+# piping find to an array directly
+while read X ;do array+=("$X") ;done < <(find "$MOVIE_SYM"/ -size +25M | sort -bf)
+
+# Finding all text files created more than 3 days ago,
 # and appending "_old" to the filename.
 
 $ find . -type f -name '*.txt' -mtime +3 -exec mv {} {}_old \;

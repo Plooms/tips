@@ -74,6 +74,10 @@ ON DUPLICATE KEY UPDATE
  SHOW tables;
 
 
+# Add columns to a table in a database
+ ALTER TABLE table_name ADD column_name column_type(180);
+
+
 # Alter (change) tables in database
  ALTER TABLE table_name MODIFY column_name column_type(180);
 

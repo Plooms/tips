@@ -90,6 +90,14 @@ LV_NAME='Media'
 }
 	
 
+# Grow LVM PV (after changing its size from e.g: mdadm)
+{
+	# NOTE only when the size of the disk itself has changed
+	sudo pvresize /dev/md0
+
+}
+  
+  
   # Grow logical volume (can be done online)
 {
   #NOTE: ( pvcreate /dev/xxx )  then,

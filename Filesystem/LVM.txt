@@ -93,7 +93,7 @@ LV_NAME='Media'
 # Grow LVM PV (after changing its size from e.g: mdadm)
 {
 	# NOTE only when the size of the disk itself has changed
-	sudo pvresize /dev/md0
+	sudo pvresize "$DISKS"
 
 }
   
@@ -105,8 +105,8 @@ LV_NAME='Media'
   # Add new HDD to Pool
   
   sudo vgextend "$VG_NAME" "$DISKS"
-  
-    
+
+
   # Grow by specific size
   
   sudo lvextend -L 20G "$VG_NAME"/"$LV_NAME"

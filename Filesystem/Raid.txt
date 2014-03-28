@@ -172,6 +172,13 @@
   sudo sysctl -w dev.raid.speed_limit_min=50000
 
 
+
+  # To make it persist across reboots
+	sudo nano /etc/sysctl.d/99-sysctl.conf
+	
+		dev.raid.speed_limit_min = 50000
+	
+	
   # See  http://goo.gl/aaOU4   
   #(Title: 5 tips to Speed Up Linux Software Raid Building And Re-syncing)
 

@@ -24,9 +24,9 @@
 
 
 # DISKS = Physical volumes '/dev/sda1 /dev/sdb1 /dev/sdc1 /dev/md127'
-DISKS='/dev/md0'
+DISKS='/dev/md127'
 
-VG_NAME='C3'
+VG_NAME='C2'
 
 LV_NAME='Media'
 
@@ -85,15 +85,16 @@ LV_NAME='Media'
   # Remove Volume Group
 {
 	
-	sudo vgremove "$VG_NAME"
+  sudo vgremove "$VG_NAME"
 	
 }
 	
 
 # Grow LVM PV (after changing its size from e.g: mdadm)
 {
-	# NOTE only when the size of the disk itself has changed
-	sudo pvresize "$DISKS"
+  
+  # NOTE only when the size of the disk itself has changed
+  sudo pvresize "$DISKS"
 
 }
   

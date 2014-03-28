@@ -64,6 +64,14 @@
 
 }
 
+
+# Grow LVM PV
+{
+
+  sudo pvresize /dev/md0
+
+}
+
 # Get mdadm details
 {
 

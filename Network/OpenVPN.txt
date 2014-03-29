@@ -39,9 +39,11 @@
  source ./vars
  ./clean-all
  ./build-ca
- ./build-key-server elmer  # <<< which is the server name
+ # The server name
+ ./build-key-server koding-server 
  ./build-dh
- ./build-key bugs   # <<< which is the client name
+ # The client name
+ ./build-key koding-client
  openvpn --genkey --secret /root/easy-rsa/keys/ta.key
  cp -r /root/easy-rsa /etc/openvpn/
  cp /usr/share/openvpn/examples/server.conf /etc/openvpn/server.conf

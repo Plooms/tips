@@ -92,7 +92,7 @@ $ gunzip [backupfile.sql.gz]
 
 $ mysql -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 
-#Have a look how you can restore your tut_backup.sql file to the Tutorials database.
+#restore your tut_backup.sql file to the Tutorials database.
 
 $ mysql -u root -p Tutorials < tut_backup.sql
 

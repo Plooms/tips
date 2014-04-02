@@ -13,23 +13,28 @@
     mysql -u root -p
 
 
+############################################
+# The Variables to use in this guide
+DB_NAME="mydb"
+TABLE_NAME="movies"
+############################################
 
 # Create Database
 
     # In MySQL console ,   MariaDB [(none)]>
     
-    CREATE DATABASE db_name;
+    CREATE DATABASE "$DB_NAME";
 
     # NOTE: change 'password' to the mysql root user password
-    GRANT ALL ON db_name.* TO 'root'@'localhost' IDENTIFIED BY 'password';
+    GRANT ALL ON "$DB_NAME".* TO 'root'@'localhost' IDENTIFIED BY 'password';
  
  
 # Switch to the new database 
-    USE db_name;
+    USE "$DB_NAME";
 
 
 # Create a Table
-  CREATE TABLE IF NOT EXISTS table_name (
+  CREATE TABLE IF NOT EXISTS "$TABLE_NAME" (
     Movie_name           varchar(250)       NOT NULL,
     Size                 int(15)            DEFAULT NULL, 
     Resolution_width     int(4)             DEFAULT NULL,
@@ -43,11 +48,11 @@
          
          
 # Print the columns of our new table
- show columns in table_name;
+ show columns in "$TABLE_NAME";
  
  
 # Insert data to table
-INSERT INTO table_name (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition) 
+INSERT INTO "$TABLE_NAME" (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition) 
 VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTES", "$DEF")
 ON DUPLICATE KEY UPDATE 
     Size_MB = "$SIZE",
@@ -59,11 +64,11 @@ ON DUPLICATE KEY UPDATE
 
  
 # View records and entries
- SELECT * FROM table_name;
+ SELECT * FROM "$TABLE_NAME";
 
 
 # Delete Tables
- DROP TABLE table_name;
+ DROP TABLE "$TABLE_NAME";
 
 
 # Show all databases
@@ -75,15 +80,15 @@ ON DUPLICATE KEY UPDATE
 
 
 # Add columns to a table in a database
- ALTER TABLE table_name ADD column_name column_type(180);
+ ALTER TABLE "$TABLE_NAME" ADD column_name column_type(180);
 
 
 # Alter (change) tables in database
- ALTER TABLE table_name MODIFY column_name column_type(180);
+ ALTER TABLE "$TABLE_NAME" MODIFY column_name column_type(180);
 
 
 # Execute commands from the terminal
- mysql -u root --password='pass' --database="db_name" --execute="select * from table_name;"
+ mysql -u root --password='pass' --database="$DB_NAME" --execute="select * from "$TABLE_NAME";"
  
  
  
@@ -103,11 +108,11 @@ EOF
  
 # Query examples
 
-	select * from table_name where Size='1000' ;
-	select * from table_name order by column_name;
+	select * from "$TABLE_NAME" where Size='1000' ;
+	select * from "$TABLE_NAME" order by column_name;
 	
 	# search for files beginning with ASS ( Use an ' not " to make it work)
-	select * from table_name where column_name LIKE 'ASS%'; 
+	select * from "$TABLE_NAME" where column_name LIKE 'ASS%'; 
 	
 	# search for files containing ASS
-	select * from table_name where column_name LIKE '%ASS%'; 
+	select * from "$TABLE_NAME" where column_name LIKE '%ASS%'; 

@@ -2,7 +2,7 @@
 # set the percentage of reserved blocks on the partition /dev/sdf1 to 0%:
 
 
-sudo tune2fs -m 0 /dev/sdf1
+sudo tune2fs -m 0 /dev/mapper/C1-Brick1
 
 
 # Be sure to replace /dev/sdf1 with your own path

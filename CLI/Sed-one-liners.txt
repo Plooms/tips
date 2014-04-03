@@ -2,8 +2,12 @@
 
 
 # Remember -i replaces in place , without -i it outputs it to terminal
- 
 
+
+# Insert text into specific line (#15)
+{
+ sed -i "15i text-to-insert-into-line-#15" file_name
+}
  # Search for pattern & replace it with pattern2
 {
  sed -i 's/pattern/pattern2/g' file_name

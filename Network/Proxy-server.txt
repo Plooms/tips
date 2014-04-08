@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# First method - use squid 
+# First method - Squid 
 {
 
 	
@@ -21,7 +21,25 @@ logfile_rotate 0
 
 }
 
-# Second method - use polipo
+
+
+
+# Second method - SSH Socks
+{
+
+ssh -D 12345 myuser@remote_ssh_server
+
+	#will open up the port 12345 on your local machine as a 
+	#SOCKS proxy
+
+	#Next, set up your browser to use the proxy server. specify that
+	#you want to use a Manual Proxy, server=(0.0.0.0) , port 12345 and 
+	#SOCKS v5 
+	 
+}
+
+
+# Third Method - Polipo
 {
 
  # install

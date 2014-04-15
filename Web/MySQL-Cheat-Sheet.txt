@@ -72,7 +72,10 @@ ON DUPLICATE KEY UPDATE
  DROP TABLE "$TABLE_NAME";
 
 
-# Delete Records
+# Delete all Records
+ DELETE FROM "$TABLE_NAME";
+
+# Delete Records (specific)
  DELETE FROM "$TABLE_NAME" where name like '%';
 
 # Show all databases

@@ -34,15 +34,15 @@ TABLE_NAME="movies"
 
 
 # Create a Table
-  CREATE TABLE IF NOT EXISTS "$TABLE_NAME" (
-    Movie_name           varchar(250)       NOT NULL,
+  CREATE TABLE IF NOT EXISTS tv (
+    Name           varchar(250)       NOT NULL,
     Size                 int(15)            DEFAULT NULL, 
     Resolution_width     int(4)             DEFAULT NULL,
     Resolution_height    int(4)             DEFAULT NULL,
     Watched              varchar(20)        DEFAULT NULL,  
     Notes                varchar(600)       DEFAULT NULL,
     Definition           varchar(4)         DEFAULT NULL,
-    PRIMARY KEY(Movie_name)
+    PRIMARY KEY(Name)
      );
          
          

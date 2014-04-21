@@ -194,14 +194,6 @@ choose a mouse and select 48 as the size
 
 
 
-System Settings > Desktop search > Basic settings
-#######################################################################
-[uncheck] enable nepomuk
-#######################################################################
-
-
-
-
 
 
 

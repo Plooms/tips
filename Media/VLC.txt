@@ -12,8 +12,11 @@ preferences > interface > Pause playback when minimized
 # To make audio louder
 preferences > show all settings > Audio > Audio gain (2.00)
 
+# To change the buffer size
+preferences > show all settings > Input/Codecs > <File|Network> Caching (ms)
+
 # To make english the default language
-preferences > show all settings > Input/Codecs > <Audio|Subtitle> Language : en,eng,us
+preferences > show all settings > Input/Codecs > 
 
 # To make seeking faster
 preferences > show all settings > Input/Codecs > Fast Seek 

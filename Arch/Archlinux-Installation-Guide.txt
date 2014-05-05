@@ -13,9 +13,9 @@
 
   # Set The HDD Variables
   
-  HDD_MASTER='/dev/sdc'
+  HDD_MASTER='/dev/sda'
 
-  HDD_ROOT='/dev/sdc5'
+  HDD_ROOT='/dev/sda1'
 
   HDD_BOOT='/dev/sdc6'
 
@@ -107,7 +107,7 @@
 # Install the base system
 {
 
-  sudo pacstrap "$INSTALL_POINT"/ base base-devel grub-bios os-prober yaourt sudo openssh rsync
+  sudo pacstrap "$INSTALL_POINT"/ base base-devel grub-bios os-prober sudo openssh rsync yaourt
  
 }
 
@@ -299,15 +299,13 @@ echo "
 
 
 
-# Optional ( mkdir /media/Original + add to fstab)
+# Optional ( mkdir /media/R1 + add to fstab)
 {
 
-mkdir /media/S1
-mkdir /media/S2
+mkdir /media/R1
 
 # To prevent writing when unmounted (execute it while not mounted)
-sudo chattr +i /media/S1
-sudo chattr +i /media/S2
+sudo chattr +i /media/R1
 
 
 
@@ -315,10 +313,11 @@ echo "
 
 
 #NFS
+#192.168.1.9:/mnt/S1 /media/S1 nfs4 auto,user,noatime 0 0
 
-192.168.1.9:/mnt/S1 /media/S1 nfs4 auto,user,noatime 0 0
+Gluster
+C1:/R1    /media/R1       glusterfs       defaults        0 0
 
-192.168.1.10:/mnt/S2 /media/S2 nfs4 auto,user,noatime 0 0
 " >> /etc/fstab
 
 }
@@ -333,7 +332,7 @@ yaourt --noconfirm -S --needed arch-install-scripts reflector \
 python2-gobject zsh dbus git slim x11vnc \
 procmail bash-completion gnome-keyring seahorse wmctrl zenity \
 gparted gpart sshfs terminator nano ntp dialog wget libnotify \
-nfs-utils kdenetwork-krdc x2goserver x2goclient
+nfs-utils x2goserver x2goclient beep
 
   }
 
@@ -341,8 +340,8 @@ nfs-utils kdenetwork-krdc x2goserver x2goclient
   {
 
 yaourt --noconfirm -S --needed networkmanager network-manager-applet \
-networkmanager-pptp kdeplasma-applets-networkmanagement \
-openvpn btsync btsync-autoconfig networkmanager-openvpn sshuttle
+networkmanager-pptp openvpn btsync btsync-autoconfig \
+networkmanager-openvpn sshuttle kdeplasma-applets-networkmanagement
 
   }
 
@@ -377,7 +376,7 @@ yaourt --noconfirm -S --needed iptables squid
 yaourt --noconfirm -S --needed firefox pidgin pidgin-libnotify dropbox \
 flashplugin jre vidalia google-chrome onboard pkgfile redshift \
 multipath-tools-git cryptsetup easystroke xbrightness xautomation \
-xdotool beep
+xdotool kdenetwork-krdc
 
 # xte = xautomation
 

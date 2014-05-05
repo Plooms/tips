@@ -19,7 +19,7 @@
   sudo nano /home/"$user"/.config/btsync/btsync.conf
 
   # change the follwing settings
-  #  * - Name		== "ABZ - Archlinux - Router
+  #  * - Name		== abz@C1-VM
   #  * - storage_path	== /home/abz/.config/btsync
   #  * - webui.login	== ""
   #  * - webui.password	== ""

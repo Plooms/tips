@@ -4,6 +4,6 @@
  
  # Create the file from which 'ln2tb' will read & generate the move file
   
-  unalias ls ; ls -1 /media/R1/Shows/ > $BATCH_FILE_TV_ADD_DELETE
+  unalias ls ; ls -1 /media/R1/Shows/ >| $BATCH_FILE_TV_ADD_DELETE
 
  # open ln2tb and select Add Multiple Shows && enjoy :) 

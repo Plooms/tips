@@ -16,6 +16,8 @@ $ find  -maxdepth 1 -type d -name DIR -prune -o -exec echo {} \;
 sudo find . \( -path ./dir1 -o -path ./dir2* \) -prune -o -print
 
 #Example for finding & excluding
+sudo find NAS/ -path NAS/"*Backup*" -prune -o -print
+
 sudo find /media/C1 \( -path /media/C1/Other -o -path /media/C1/HOME* \) -prune -o -name "*.srt"  -mtime -1 -print
 
 

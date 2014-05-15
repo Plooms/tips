@@ -517,7 +517,7 @@ yaourt --noconfirm -S --needed apache php php-apache mariadb
   sudo systemctl enable slim.service
 
   sudo systemctl enable NetworkManager.service
-    
+	# If there is a Network auto mount only e.g (nfs or gluster)
   sudo systemctl enable NetworkManager-wait-online.service
 
   sudo systemctl enable cronie.service

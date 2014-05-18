@@ -23,7 +23,7 @@
 {
 	
   sudo mkdir -v "$MNT_LOCATION"
-  sudo chmod 777 "$MNT_LOCATION"
+  sudo chmod -R 777 "$MNT_LOCATION"
 
 
  # Creating the File

@@ -13,9 +13,9 @@
  # Set the Variables (C = Container)
  C_LOCATION='/tmp' 
 				# ^ No trailing slash
- C_NAME='fs-test.iso'
- LOOP_DEV='loop3'
- MNT_LOCATION='/mnt/fs'
+ C_NAME='fs-test2.iso'
+ LOOP_DEV='loop4'
+ MNT_LOCATION='/mnt/fs2'
 
 
 
@@ -31,6 +31,10 @@
 	
 	# 7000 is best for 8 GB flash (fallocate is faster than dd):
   fallocate -l 7GB -o 1024 "$C_LOCATION"/"$C_NAME"
+	
+	
+	# or
+	
 	
 	# 7000 is best for 8 GB flash
   dd if=/dev/zero of="$C_LOCATION"/"$C_NAME" bs=1024K count=7000
@@ -78,10 +82,10 @@
 {
   
   # NOTE: If (Logical partition)
-  sudo mount /dev/mapper/"$LOOP_DEV"p5 "$MNT_LOCATION"
+  sudo mount -v /dev/mapper/"$LOOP_DEV"p5 "$MNT_LOCATION"
   
   # NOTE: If (Primary Partition)
-  sudo mount /dev/mapper/"$LOOP_DEV"p1 "$MNT_LOCATION"
+  sudo mount -v /dev/mapper/"$LOOP_DEV"p1 "$MNT_LOCATION"
 
 }
 

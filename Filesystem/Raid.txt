@@ -135,7 +135,7 @@
   # then add a new disk to start rebuilding the array
   sudo mdadm --add /dev/md0 /dev/sdXX
   
-  # If  disks were marked as Removed but they are working (force add them)
+  # If disks were marked as Removed but they are working (force add them)
   sudo mdadm --stop /dev/md0
   sudo mdadm --assemble --force /dev/md0 /dev/sd[abc]1
 

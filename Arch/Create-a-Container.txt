@@ -11,11 +11,11 @@
 
 
  # Set the Variables (C = Container)
- C_LOCATION='/tmp' 
+ C_LOCATION='/mnt' 
 				# ^ No trailing slash
- C_NAME='fs-test2.iso'
+ C_NAME='xfs.iso'
  LOOP_DEV='loop4'
- MNT_LOCATION='/mnt/fs2'
+ MNT_LOCATION='/mnt/xfs'
 
 
 
@@ -30,7 +30,7 @@
 {
 	
 	# 7000 is best for 8 GB flash (fallocate is faster than dd):
-  fallocate -l 7GB -o 1024 "$C_LOCATION"/"$C_NAME"
+  sudo fallocate -l 7GB -o 1024 "$C_LOCATION"/"$C_NAME"
 	
 	
 	# or

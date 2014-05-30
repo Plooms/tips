@@ -28,7 +28,7 @@ DISKS='/dev/md127'
 
 VG_NAME='C2'
 
-LV_NAME='Media'
+LV_NAME='Brick1'
 
 
 

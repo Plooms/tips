@@ -24,9 +24,9 @@
 
 
 # DISKS = Physical volumes '/dev/sda1 /dev/sdb1 /dev/sdc1 /dev/md127'
-DISKS='/dev/md127'
+DISKS='/dev/md0'
 
-VG_NAME='C2'
+VG_NAME='C1'
 
 LV_NAME='Brick1'
 

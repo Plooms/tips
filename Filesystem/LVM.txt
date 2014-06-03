@@ -73,11 +73,7 @@ LV_NAME='Brick1'
   # Create a Filesystem
 {
 
-  sudo mkfs.ext4 /dev/mapper/"$VG_NAME"-"$LV_NAME"
-  
-  # Reserved blocks :)
-  sudo tune2fs -m 0 /dev/mapper/"$VG_NAME"-"$LV_NAME"
-
+  sudo mkfs.xfs /dev/mapper/"$VG_NAME"-"$LV_NAME"
 
 }
 

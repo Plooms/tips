@@ -43,7 +43,7 @@
 
   sudo watch -n .1 cat /proc/mdstat
   # or
-  sudo watch -n .1 mdadm --detail /dev/md0
+  sudo mdadm --detail /dev/md0
 
 }
 
@@ -82,7 +82,7 @@
 # Update configuration file
 {
 
-  sudo mdadm --examine --scan > /etc/mdadm.conf
+  su -c 'mdadm --examine --scan >| /etc/mdadm.conf'
 
 }
 

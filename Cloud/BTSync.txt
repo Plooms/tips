@@ -12,7 +12,7 @@
 {  
   
   
-  user='abz'
+  user='sal'
 
   sudo systemctl restart btsync@"$user"
 

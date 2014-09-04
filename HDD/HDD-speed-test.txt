@@ -2,11 +2,11 @@
 
 p hdparm
 
-# Read test (safe to data)
+# Read test (safe to data) (tests block device not filesystem)
 
 sudo hdparm -tT /dev/sdXX
 
-# or (be careful)
+# or (tests filesystem speeds)
 
   # Create a file named 'ass' = 1GB   "Choose either zero or urandom"
     

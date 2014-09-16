@@ -2,6 +2,15 @@
 # GlusterFS tips and trick and caveats
 
 
+
+# Reset an Option to default parameters
+sudo gluster volume reset R1 <option>
+
+
+
+
+
+
 # When Getting this error: 
 # (is not in 'Peer in Cluster' state)
 

@@ -1,0 +1,6 @@
+#!/bin/bash
+# Increase /tmp size to whatever you want
+
+
+# Remember to check how much ram you have beforehand
+sudo mount -o remount,size=6G /tmp            

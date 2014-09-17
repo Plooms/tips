@@ -73,8 +73,8 @@ quick tile window to right > ctrl-alt-2
 window to next screen > ctrl-alt-8
 zoom in > ctrl-alt-5
 zoom out > ctrl-alt-6
-increase volume > ctrl-alt-]
-decrease volume > ctrl-alt-[
+increase volume > ctrl-alt-b
+decrease volume > ctrl-alt-n
 #######################################################################
 
 

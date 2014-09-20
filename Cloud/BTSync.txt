@@ -20,7 +20,9 @@
 
   sudo nano /home/"$user"/.config/syncthing/config.xml
 
+  
   # change the address from 0.0.0.0 to the IP e.g: 10.0.0.101:8080
+  
   #      <gui enabled="true" tls="false">
   #      <address>0.0.0.0:8080</address>
 
@@ -99,7 +101,7 @@
 # Start the Sync Procedure
 {
 
-  Go to "host:8889" in your browser,
+  Go to "host:8080" in your browser,
   
   Add the folders 
 "  
@@ -107,11 +109,6 @@
 &
 /usr/local/bin
 "  
-  Then, Go to the next clients and add the synced folders using 
-
-  ------------------------------------------
-  / THE "READ-ONLY KEY" | # very important \
-  ------------------------------------------
 
 }
 

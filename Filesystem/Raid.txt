@@ -50,7 +50,7 @@
 # Add a spare or new disk (needed before growing)
 {
 
-  sudo mdadm --add /dev/md0 /dev/sdXX /dev/sdXX
+  sudo mdadm --add /dev/md0 /dev/sdXX
 
 }
 

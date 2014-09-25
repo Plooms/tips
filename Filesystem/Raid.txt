@@ -64,7 +64,7 @@
 
 }
 
-# Extend Raid array by replacing the old disks with bigger larger disks
+# Extend Raid array (replace disks with bigger larger disks) NO-RAID0
 {
 
   sudo mdadm -f /dev/md0 /dev/sdXX			<< # OLD DISK
@@ -78,7 +78,7 @@
   sudo mdadm --grow /dev/md0 --bitmap internal
   
   # Finally , Resize the filesystem using:
-  LVM:	sudo pvresize "$DISKS"
+  LVM:	sudo pvresize /dev/md0
   EXT4: resize2fs /dev/md0
   XFS:	xfs_growfs /dev/md0
 

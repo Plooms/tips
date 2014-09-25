@@ -71,12 +71,16 @@
   sudo mdadm -r /dev/md0 /dev/sdXX			<< # OLD DISK
   sudo mdadm --add /dev/md0 /dev/sdXX		<< # NEW DISK
   
-  # Finally , After all disks are added and resilvered
+  # After all disks are added and resilvered
   sudo mdadm --grow /dev/md0 --bitmap none
   sudo mdadm --grow /dev/md0 --size max
   sudo mdadm --wait /dev/md0
   sudo mdadm --grow /dev/md0 --bitmap internal
-
+  
+  # Finally , Resize the filesystem using:
+  LVM:	sudo pvresize "$DISKS"
+  EXT4: resize2fs /dev/md0
+  XFS:	xfs_growfs /dev/md0
 
 }
 

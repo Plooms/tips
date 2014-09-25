@@ -64,6 +64,21 @@
 
 }
 
+# Extend Raid array by replacing the old disks with bigger larger disks
+{
+
+  sudo mdadm -f /dev/md0 /dev/sdXX			<< # OLD DISK
+  sudo mdadm -r /dev/md0 /dev/sdXX			<< # OLD DISK
+  sudo mdadm --add /dev/md0 /dev/sdXX		<< # NEW DISK
+  
+  # Finally , After all disks are added and resilvered
+  sudo mdadm --grow /dev/md0 --bitmap none
+  sudo mdadm --grow /dev/md0 --size max
+  sudo mdadm --wait /dev/md0
+  sudo mdadm --grow /dev/md0 --bitmap internal
+
+
+}
 
 # Grow LVM PV
 {

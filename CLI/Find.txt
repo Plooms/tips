@@ -4,6 +4,10 @@
 # piping find to an array directly
 while read X ;do array+=("$X") ;done < <(find "$MOVIE_SYM"/ -size +25M | sort -bf)
 
+# Use GNU Parallel with find
+find /folder -name "*.txt" | sort | parallel myCommand
+
+
 # Finding all text files created more than 3 days ago,
 # and appending "_old" to the filename.
 

@@ -1,9 +1,4 @@
 #!/bin/bash
-# Create a file with a predetermined size
-
+# Use GNU Parallel to parallelize processes
   
-  # Print all columns
-    awk '{ print $0 }' /etc/passwd
-    
-  # Print all columns and attach ("ass-") to the start and the end
-    awk '{ print "ass-" $0 "-ass" }' /etc/passwd
+  find /folder -name "*.txt" | sort | parallel myCommand

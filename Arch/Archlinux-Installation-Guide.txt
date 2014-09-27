@@ -332,7 +332,7 @@ yaourt --noconfirm -S --needed arch-install-scripts reflector \
 python2-gobject zsh dbus git slim x11vnc \
 procmail bash-completion gnome-keyring seahorse wmctrl zenity \
 gparted gpart sshfs terminator nano ntp dialog wget libnotify \
-nfs-utils x2goserver x2goclient beep
+nfs-utils x2goserver x2goclient beep parallel
 
   }
 

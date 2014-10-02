@@ -1,11 +1,12 @@
 #!/bin/bash
 #Move x number of files in (head -20000)
 
+
 # Method 1 (shit)
 ls | sort -n | head -20000| xargs -i mv "{}" /destination
 
-# Method 2 (good)
 
+# Method 2 (good)
 TMP="$(mktemp)"
 TMP1="$(mktemp)"
 TMP2="$(mktemp)"

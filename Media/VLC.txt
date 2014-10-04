@@ -31,13 +31,13 @@ preferences > video > fullscreen
 preferences > show all settings > Video > Hide cursor and fullscreen (1 ms)
 
 # To change Jump length
-preferences > show all settings > Hotkey setttings > Jump sizes ( 3,3,60,9999 )
+preferences > show all settings > Hotkey setttings > Jump sizes (3,30,60,9999)
 
 # To add mouse gestures
 preferences > show all settings > Control interfaces > mouse gestures
 
 # To show video title on video start 
-preferences > show all settings > Video > Show media title + show video title for ??? ms
+preferences > show all settings > Video > Show media title + show video title for X ms
 
 # To force aspect ratio
 preferences > show all settings > Video > source aspect ratio = 16:9
@@ -45,19 +45,16 @@ preferences > show all settings > Video > source aspect ratio = 16:9
 # To quit vlc after playback
 n .xbmc/userdata/playercorefactory.xml 
 
-	# then
-	<args>"{1}" vlc://quit</args>
-	
-	# or (better)
-	<args>"{1}" --play-and-exit </args>
+
+	<args>"{1}".xspf --play-and-exit </args>
 
 
 
 
 
 # Mouse Gestures
-    left : Short time skip backward (10sec by default)
-    right : Short time skip forward (10sec by default)
+    left : (Short time) skip backward (10sec by default)
+    right : (Short time) skip forward (10sec by default)
     left-up : Faster
     right-up : Slower
     left-down : Go to previous entry in playlist

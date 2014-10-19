@@ -22,21 +22,24 @@
   # Server
   {
 
-  sudo systemctl enable rpc-idmapd
-  sudo systemctl enable rpc-mountd
+  sudo systemctl enable  rpc-idmapd
+  sudo systemctl enable  rpc-mountd
+  sudo systemctl enable  nfs-server
   sudo systemctl restart rpc-idmapd
   sudo systemctl restart rpc-mountd
+  sudo systemctl restart nfs-server
+
 
   }
 
   # Client
   {
   
-  sudo systemctl enable rpc-statd
-  sudo systemctl enable rpcbind
+  sudo systemctl enable  rpc-statd
+  sudo systemctl enable  rpcbind
   sudo systemctl restart rpc-statd
   sudo systemctl restart rpcbind
-  sudo systemctl enable rpc-gssd.service
+  sudo systemctl enable  rpc-gssd.service
   sudo systemctl restart rpc-gssd.service
 
   }

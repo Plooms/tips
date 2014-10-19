@@ -38,6 +38,17 @@
   sfdisk /dev/sdb < mbr
 
 }
+
+# Alteranate method 3  (works with gpt)#
+{
+
+  sgdisk --backup=gpt-table /dev/sda
+  sgdisk --load-backup=gpt-table /dev/sdb
+  sgdisk -G /dev/sdb
+  
+}
+
+
 # Reload the partition table in order to see the changes.
 {
 

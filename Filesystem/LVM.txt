@@ -58,7 +58,7 @@ LV_NAME='Data1'
   # Create logical volumes
 {
 
-  sudo lvcreate -l +99%FREE "$VG_NAME" -n "$LV_NAME"
+  sudo lvcreate -l +100%FREE "$VG_NAME" -n "$LV_NAME"
 
   # or for specific size
 

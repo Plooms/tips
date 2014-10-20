@@ -25,7 +25,7 @@ Width = Huge
 Maximum lines = Unlimited
 
 ###############################################################
-Settings > Configure Dolphin > Nabigation
+Settings > Configure Dolphin > Navigation
 
 (*)
 ( )

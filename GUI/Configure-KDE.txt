@@ -72,7 +72,7 @@ window to next screen > ctrl-alt-8
 zoom in > ctrl-alt-5
 zoom out > ctrl-alt-6
 
-[KDE component: KWin]
+[KDE component: KMix]
 increase volume > ctrl-alt-b
 decrease volume > ctrl-alt-n
 #######################################################################

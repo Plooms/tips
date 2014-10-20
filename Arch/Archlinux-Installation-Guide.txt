@@ -259,9 +259,7 @@
   pacman --noconfirm -R glamor-egl
   
   pacman --noconfirm -R xf86-video-nouveau ; pacman --noconfirm -R nouveau-dri
-  
-  pacman -S nvidia ; pacman -S --noconfirm --needed xfce4 xfce4-goodies
-  
+    
   pacman -S nvidia-340xx ; pacman -S --noconfirm --needed xfce4 xfce4-goodies
 
 

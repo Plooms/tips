@@ -62,17 +62,20 @@ System Settings > Application Appearance > Fonts
 
 System Settings > Shortcuts & Gestures > Global Keyboard Shortcuts
 #######################################################################
+[KDE component: KWin]
 actual size > ctrl-alt-9
 close window > alt-f4
 decrease opacity > ctrl-alt-w
 increase opacity > ctrl-alt-Q
 maximize > ctrl-alt-7
 minimize > ctrl-alt-m
-quick tile window to left > ctrl-alt-1
-quick tile window to right > ctrl-alt-2
+quick tile window to the left > ctrl-alt-1
+quick tile window to the right > ctrl-alt-2
 window to next screen > ctrl-alt-8
 zoom in > ctrl-alt-5
 zoom out > ctrl-alt-6
+
+[KDE component: KWin]
 increase volume > ctrl-alt-b
 decrease volume > ctrl-alt-n
 #######################################################################

@@ -6,26 +6,26 @@
 -------------------------------------------
 
   # Set The User Variable
-  MYUSER='abz'
+  MYUSER='sal'
   
   # Set the install Location Variable
   INSTALL_POINT='/mnt/arch'
 
   # Set The HDD Variables
   
-  HDD_MASTER='/dev/sda'
+  HDD_MASTER='/dev/sdb'
 
-  HDD_ROOT='/dev/sda1'
+  HDD_ROOT='/dev/mapper/S0-ROOT'
 
-  HDD_BOOT='/dev/sdc6'
+  HDD_BOOT='/dev/sdb5'
 
-  HDD_HOME='/dev/sdc7'
+  HDD_HOME='/dev/mapper/S0-HOME'
   
-  HDD_VAR='/dev/sdc8'
+  HDD_VAR='/dev/mapper/S0-VAR'
   
-  HDD_BIN='/dev/sdc9'
+  HDD_BIN='/dev/mapper/S0-BIN'
   
-  HDD_WEBAPPS='/dev/sdc10'
+  HDD_WEBAPPS=''
 
   
   # Set The Variables if using a Container
@@ -173,10 +173,10 @@
 -------------------------------------------
   
   # Set The User Variable (in the Chroot)
-  MYUSER='abz'
+  MYUSER='sal'
   
   # Set The HDD Variables (in the Chroot)
-  HDD_MASTER='/dev/sda1'
+  HDD_MASTER='/dev/sdb'
   
   # Set The Container Variables (in the Chroot)
   HDD_MASTER='/dev/loop3'
@@ -234,9 +234,9 @@
 
 
   # Xinitrc
-  echo "exec dbus-launch startxfce4" > /home/"$MYUSER"/.xinitrc
+  echo "exec dbus-launch startkde" > /home/"$MYUSER"/.xinitrc
 
-  echo "exec dbus-launch startxfce4" > /root/.xinitrc
+  echo "exec dbus-launch startkde" > /root/.xinitrc
 
 }
 
@@ -262,6 +262,8 @@
   
   pacman -S nvidia ; pacman -S --noconfirm --needed xfce4 xfce4-goodies
   
+  pacman -S nvidia-340xx ; pacman -S --noconfirm --needed xfce4 xfce4-goodies
+
 
 }
 
@@ -514,7 +516,7 @@ yaourt --noconfirm -S --needed apache php php-apache mariadb
   # Needed
   {
   
-  sudo systemctl enable slim.service
+  sudo systemctl enable kdm.service
 
   sudo systemctl enable NetworkManager.service
 	# If there is a Network auto mount only e.g (nfs or gluster)
@@ -641,7 +643,7 @@ yaourt --noconfirm -S --needed apache php php-apache mariadb
 
 
 
-# unmount teh new system
+# unmount the new system
 {
 
   sudo umount -R "$INSTALL_POINT"/

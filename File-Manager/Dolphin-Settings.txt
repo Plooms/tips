@@ -102,7 +102,7 @@ Back
 Forward
 Up
 Reload
-seperator
+-seperator-
 Select all
 Rename
 Find
@@ -110,7 +110,7 @@ Preview
 Split
 Show Hidden
 Show in Groups
-seperator
+-seperator-
 Icons
 Compact
 Details
@@ -124,7 +124,7 @@ Sort By
 
 # General View of folders
 ###############################################################
-#(Press ctrl+m to show menubar if hidden)
+# (Press ctrl+m to show menubar if hidden)
 View > Adjust view properties
 
 Icons:

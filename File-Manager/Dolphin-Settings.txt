@@ -124,6 +124,7 @@ Sort By
 
 # General View of folders
 ###############################################################
+#(Press ctrl+m to show menubar if hidden)
 View > Adjust view properties
 
 Icons:

@@ -3,8 +3,11 @@
 
 # Install to configure GTK apps
 	
-	# Install
-	p kde-gtk-config kcm-gtk
+	# Community
+	p kde-gtk-config 
+	
+	#AUR
+	p kcm-gtk
 
 
 

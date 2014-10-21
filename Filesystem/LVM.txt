@@ -24,9 +24,9 @@
 
 
 # DISKS = Physical volumes '/dev/sda1 /dev/sdb1 /dev/sdc1 /dev/md127'
-DISKS='/dev/md60p1'
+DISKS='/dev/md0p1'
 
-VG_NAME='C1'
+VG_NAME='S1'
 
 LV_NAME='Data1'
 
@@ -173,7 +173,7 @@ LV_NAME='Data1'
   sudo modprobe dm-mod
   sudo vgscan
   sudo vgchange -ay
-  sudo systemctl enable lvm-monitoring
+  sudo systemctl enable lvm2-monitor
 
 }
 

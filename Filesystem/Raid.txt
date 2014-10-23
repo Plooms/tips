@@ -149,7 +149,7 @@
 # Recover from a missing drive
 {
 
-  sudo mdadm --manage /dev/md0 --run
+  sudo mdadm --manage /dev/md0 --run --force
   
   # then add a new disk to start rebuilding the array
   sudo mdadm --add /dev/md0 /dev/sdXX

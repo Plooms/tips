@@ -62,7 +62,7 @@ max_per_ip=2           # Maximum connections per IP
 
 ########################################################################
 # Port configurations
-listen_port=2211
+listen_port=21
 
 # For private FTP servers that are exposed to the web it's recommended
 # to change the listening port to something other than the standard port 21.

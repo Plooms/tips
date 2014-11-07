@@ -38,6 +38,11 @@ chroot_local_user=YES
 #This will make local users jailed by default. In this case, the file
 # specified by "chroot_list_file" lists users that are not in a chroot jail. 
 
+#Choose the FTP root dir
+local_root=/example/directory/
+
+#NOTE: The root dir must be unwritable
+sudo chmod 555 /example/directory/
 
 ########################################################################
 #Limiting user login

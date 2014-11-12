@@ -335,6 +335,28 @@ System Settings > Login screen
 
 # choose your shit
 
+System Settings > Startup and Shutdown > Session Management
+#######################################################################
+<General> :
+
+(check)
+(check)
+
+
+
+<Default Leave Option> :
+
+(*) End Current Session
+
+
+
+<On Login> :
+
+(*) Restore Previous Session
+
+
+
+#######################################################################
 
 
 done

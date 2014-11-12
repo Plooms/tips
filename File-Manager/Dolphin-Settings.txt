@@ -39,8 +39,8 @@ Settings > Configure Dolphin > Services
 
 _/ Copy to and Move to
 _/ Compress*
-_/ Extract*
 _/ Delete
+_/ Extract*
 _/ Open Terminal here
 
 ###############################################################

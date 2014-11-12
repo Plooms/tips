@@ -75,6 +75,7 @@ zoom out > ctrl-alt-6
 [KDE component: KMix]
 increase volume > ctrl-alt-b
 decrease volume > ctrl-alt-n
+mute volume > ctrl-alt-g
 #######################################################################
 
 
@@ -139,9 +140,9 @@ layout mode = regular grid
 (check)
 
       Windows						Desktop
-left = activate window             left = no
-middle = no                        middle = no
-right = no                         right = no
+left =   activate window            left =		no
+middle = no                        	middle =	no
+right =  no                         right =		no
 #######################################################################
 
 

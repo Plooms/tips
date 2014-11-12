@@ -17,7 +17,7 @@ x
 Settings > Configure Dolphin > View Modes
 
 Icons : 
-Default = 96 Pixels
+Default = 80 Pixels
 Preview = 256 Pixels (Biggest)
 
 Font = Sans Serif - Normal - 22

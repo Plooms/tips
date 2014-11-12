@@ -209,18 +209,21 @@ System Settings > Window Behaviour > Window Behaviour
 
 [Policy] = Click to focus (mouse precedence)
 
+Focus Stealing Prevention = Low
+
 (check) separate screen focus
+(check) Active Screen follows mouse
 
 
 
 
-<titlebar actions>
+<titlebar actions> :
 
 double click = maximize
 wheel event = switch to window tab left/right
 
 
-<advanced>
+<advanced> :
 
 [Placement] : centered
 
@@ -252,7 +255,7 @@ System Settings > Workspace Behaviour > Screen edges
 #######################################################################
 [top right/left] : Present windows (all desktops)
 
-[bottom left] : show dashboard
+[bottom right] : show dashboard
 
 # this fixes the unmaximize when moving bug
 (uncheck) maximize windows by dragging

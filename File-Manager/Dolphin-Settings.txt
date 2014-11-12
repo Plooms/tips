@@ -70,6 +70,7 @@ Previews:
 _/ Folders
 _/ Images
 _/ Jpegs
+_/ SVG Images
 _/ Text files
 _/ Video files (ffmpeg)
 
@@ -125,6 +126,14 @@ Sort By
 # General View of folders
 ###############################################################
 # (Press ctrl+m to show menubar if hidden)
+
+View > Panels :
+
+(*) Places
+(*) Terminal
+
+
+
 View > Adjust view properties
 
 Icons:

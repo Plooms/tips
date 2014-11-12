@@ -171,8 +171,9 @@ Tearing prevention = Full scene repaints
 
 System Settings > Workspace appearance > window decorations
 #######################################################################
- click on get new decorations , select (glowglass (aurorae) by vicko )
+ click on get new decorations , search for "glowglass (aurorae)"  by vicko
 
+Select the new glowglass theme, then:
 [configure decorations] 
 border size = normal
 button size = oversized

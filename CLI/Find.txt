@@ -24,7 +24,8 @@ sudo find NAS/ -path NAS/"*Backup*" -prune -o -print
 
 sudo find /media/C1 \( -path /media/C1/Other -o -path /media/C1/HOME* \) -prune -o -name "*.srt"  -mtime -1 -print
 
-
+# Find Multiple Patterns
+sudo find /media/C1 \( -iname file1 -o -iname file2 -o ... \) >outputfile
 
 #----------------------------------------------------------------------
 $ find /media/Original/ -type f -name 'Metallica*' -exec rm -r {} \;

@@ -10,7 +10,7 @@ Settings > Configure Dolphin > Startup
 x
 x
 _/
-x
+_/
 
 
 ###############################################################
@@ -103,15 +103,14 @@ Back
 Forward
 Up
 Reload
--seperator-
 Select all
+Invert selection (shortname= Invert)
+Cut
+Show Hidden
 Rename
-Find
 Preview
 Split
-Show Hidden
-Show in Groups
--seperator-
+Show in Groups (shortname= Show Groups)
 Icons
 Compact
 Details

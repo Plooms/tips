@@ -44,6 +44,9 @@ local_root=/example/directory/
 #NOTE: The root dir must be unwritable
 sudo chmod 555 /example/directory/
 
+# This is the actual folder that is going to be shared
+sudo mkdir /example/directory/FTP
+
 ########################################################################
 #Limiting user login
 #It's possible to prevent users from logging into the FTP server by adding:

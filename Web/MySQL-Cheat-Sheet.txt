@@ -14,7 +14,8 @@
 
 
 ############################################
-# The Variables to use in this guide
+# The Variables in this guide are for display only 
+#(you need to type the db name or table name when needed)
 DB_NAME="mydb"
 TABLE_NAME="movies"
 ############################################

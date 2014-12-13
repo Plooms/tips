@@ -53,20 +53,20 @@ n .xbmc/userdata/playercorefactory.xml
 
 
 # Mouse Gestures
-    left : (Short time) skip backward (10sec by default)
-    right : (Short time) skip forward (10sec by default)
-    left-up : Faster
-    right-up : Slower
-    left-down : Go to previous entry in playlist
-    right-down : Go to next entry in playlist
-    left-right : Play/Pause
-    right-left : Play/Pause 
+<     left 			: (Short time) skip backward (10sec by default)
+>     right 		: (Short time) skip forward (10sec by default)
+< ^   left-up		: Faster
+> ^   right-up		: Slower
+< v   left-down 	: Go to previous entry in playlist
+> v   right-down 	: Go to next entry in playlist
+< >   left-right 	: Play/Pause
+> <   right-left 	: Play/Pause 
 
-    up : Volume up
-    down : Volume down
-    up-down : Mute Volume
-    down-up : Mute Volume
-    up-right : Change Audio track
-    down-right : Change Subtitle track
-    up-left : Enter fullscreen mode
-    down-left : Quit VLC 
+^     up 			: Volume up
+v     down 			: Volume down
+^ v   up-down	 	: Mute Volume
+v ^   down-up 		: Mute Volume
+^ >   up-right 		: Change Audio track
+v >   down-right	: Change Subtitle track
+^ <   up-left 		: Enter fullscreen mode
+v <   down-left 	: Quit VLC 

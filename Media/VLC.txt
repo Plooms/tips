@@ -70,3 +70,5 @@ v ^   down-up 		: Mute Volume
 v >   down-right	: Change Subtitle track
 ^ <   up-left 		: Enter fullscreen mode
 v <   down-left 	: Quit VLC 
+# To disable audio and get it back do:
+down-right - up-right

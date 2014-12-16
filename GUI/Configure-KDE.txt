@@ -209,7 +209,7 @@ System Settings > Window Behaviour > Window Behaviour
 
 [Policy] = Click to focus (mouse precedence)
 
-Focus Stealing Prevention = Low
+Focus Stealing Prevention = None
 
 (check) separate screen focus
 (check) Active Screen follows mouse

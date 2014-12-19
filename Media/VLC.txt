@@ -32,6 +32,7 @@ preferences > show all settings > Video > Hide cursor and fullscreen (1 ms)
 
 # To change Jump length
 preferences > show all settings > Hotkey setttings > Jump sizes (3,30,60,9999)
+#^ (very short = mouse scroll) - (short = gesture jump)
 
 # To add mouse gestures
 preferences > show all settings > Control interfaces > mouse gestures

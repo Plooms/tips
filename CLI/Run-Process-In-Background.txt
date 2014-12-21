@@ -1,0 +1,9 @@
+#!/bin/bash
+# Run processes in the background and enable killing the terminal
+# that opened them
+
+
+nohup $command &
+
+
+  

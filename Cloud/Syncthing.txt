@@ -82,6 +82,14 @@
 
 
 
+  # Sync Password files
+  mv /home/"$user"/.db-password   /home/"$user"/Sync-Central-Repo/
+  mv /home/"$user"/.ddns-password /home/"$user"/Sync-Central-Repo/
+  ln -sf /home/"$user"/Sync-Central-Repo/.db-password   /home/"$user"/.db-password
+  ln -sf /home/"$user"/Sync-Central-Repo/.ddns-password /home/"$user"/.ddns-password
+
+
+
   # Sync yaourtrc
   sudo mv /etc/yaourtrc  /home/"$user"/Sync-Central-Repo/
   sudo ln -sf /home/"$user"/Sync-Central-Repo/yaourtrc  /etc/yaourtrc
@@ -132,6 +140,15 @@
   sudo ln -sf /home/"$user"/Sync-Central-Repo/.nanorc /root/.nanorc
 
 
+  # Sync Password files
+  sudo rm /home/"$user"/.db-password
+  sudo rm /home/"$user"/.ddns-password
+  sudo rm /root/.db-password
+  sudo rm /root/.ddns-password
+  ln -sf /home/"$user"/Sync-Central-Repo/.db-password   /home/"$user"/.db-password
+  ln -sf /home/"$user"/Sync-Central-Repo/.ddns-password /home/"$user"/.ddns-password
+  sudo ln -sf /home/"$user"/Sync-Central-Repo/.db-password   /root/.db-password
+  sudo ln -sf /home/"$user"/Sync-Central-Repo/.ddns-password /root/.ddns-password
 
   # Sync yaourtrc
   sudo rm /etc/yaourtrc  

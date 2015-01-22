@@ -101,6 +101,15 @@ Include conf/extra/php5_module.conf
 }
 
 
+	#NOTE: If having trouble with httpd not starting with message
+	
+	# (Apache is running a threaded MPM, but your PHP Module 
+	#+ is not threadsafe.  You need to recompile PHP)
+	
+	#In httpd.conf 
+Replace this > LoadModule mpm_event_module modules/mod_mpm_event.so
+With this    > LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
+
 
 #######################################################################
 

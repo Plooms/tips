@@ -51,20 +51,20 @@
 
 	
 	# Make sure these are uncommented ; and add them if they dont exist
-	extension=curl.so
-	extension=gd.so
-	extension=gettext.so
-	extension=iconv.so
-	extension=intl.so
-	extension=mysqli.so
-	extension=mysql.so
-	extension=openssl.so
-	extension=pdo_mysql.so
-	extension=xmlrpc.so
-	extension=zip.so
-	extension=ixed.5.3
-	extension=uploadprogress.so
-	extension=xcache.so
+extension=curl.so
+extension=gd.so
+extension=gettext.so
+extension=iconv.so
+extension=intl.so
+extension=mysqli.so
+extension=mysql.so
+extension=openssl.so
+extension=pdo_mysql.so
+extension=xmlrpc.so
+extension=zip.so
+extension=ixed.5.3
+extension=uploadprogress.so
+extension=xcache.so
 
 	# configure the following options for upload cap size (all same same)
 	post_max_size = 1000M
@@ -95,8 +95,8 @@
 
 	# Add to the end of  /httpd.conf to run php
 	
-	LoadModule php5_module modules/libphp5.so
-	Include conf/extra/php5_module.conf
+LoadModule php5_module modules/libphp5.so
+Include conf/extra/php5_module.conf
 
 }
 

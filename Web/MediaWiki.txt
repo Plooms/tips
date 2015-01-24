@@ -138,7 +138,8 @@ With this    > LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
 
 # To import text files into Mediawiki
 
-# Copy the "importTextFile.php" > "/mediawiki/maintenance/"
+# Copy the "importTextFile.php" which is in the same folder as this T&T 
+# to > "/mediawiki/maintenance/"
 
 # Usage: 
 

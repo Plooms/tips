@@ -1,0 +1,16 @@
+#!/bin/bash
+# Make notify-send work with cron
+
+# in ~/.bashrc or ~/.zshrc
+
+xhost + > /dev/null
+
+
+# put export DISPLAY=:0.0 in the crontab or script
+
+
+# Example
+*/30 * * * * export DISPLAY=:0.0;/usr/bin/notify-send Hey "Drink Water \!\!"
+
+# Example to run as another user
+* * * * *    export DISPLAY=:0.0 && export XAUTHORITY=/home/USER/.Xauthority && sudo -u USER /usr/bin/notify-send Hey "How are you"

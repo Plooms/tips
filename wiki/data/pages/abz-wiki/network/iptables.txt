@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Save iptables config for persistent rules after reboots
+
+
+  su -c 'iptables-save > /etc/iptables/iptables.rules'
+  
+  sudo systemctl reload iptables
+
+
+
+#######################################################################
+	
+# Resources
+
+https://wiki.archlinux.org/index.php/iptables

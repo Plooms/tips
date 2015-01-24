@@ -1,0 +1,189 @@
+#!/bin/bash
+# How to create an OpenVPN server
+
+
+# install
+{
+
+  p openvpn
+  p easy-rsa
+}
+
+# Up the tunnel module
+{
+
+  s modprobe tun
+  
+}
+
+# Create a Public Key Infrastructure Using the easy-rsa Scripts
+{
+
+# enter these commands
+ su -
+ cp -r /usr/share/easy-rsa /root/
+ cd /root/easy-rsa
+ sudo nano /root/easy-rsa/vars
+
+ # Set the KEY_COUNTRY, KEY_PROVINCE, KEY_CITY, KEY_ORG, and KEY_EMAIL
+ # Change the KEY_SIZE parameter to 2048.
+ 
+ example: 
+ 
+ export KEY_SIZE=2048
+ export KEY_CITY="Acme Acres"
+ 
+-----------------------------------------------
+# then enter these commands
+
+ source ./vars
+ ./clean-all
+ ./build-ca
+ # The server name
+ ./build-key-server koding-server 
+ ./build-dh
+ # The client name
+ ./build-key koding-client
+ openvpn --genkey --secret /root/easy-rsa/keys/ta.key
+ cp -r /root/easy-rsa /etc/openvpn/
+ cp /usr/share/openvpn/examples/server.conf /etc/openvpn/server.conf
+ cp /usr/share/openvpn/examples/client.conf /etc/openvpn/client.conf
+ 
+ 
+}
+
+
+-----------------------------------------------
+# (Android) - Converting certificates to encrypted .p12 format
+
+# Android will only read VPN certificates that are stored 
+# in an encrypted .p12 file. These can be generated with this command:
+
+openssl pkcs12 -export -inkey keys/bunny.key \
+-in keys/bunny.crt -certfile keys/ca.crt -out keys/bunny.p12
+
+	# The key will be in keys/<client>.p12
+
+
+# Connect the Client and Server LANs
+{
+ 
+ # Temporary
+ sudo ip link set dev eth0 promisc on     #<<<<<< on both the server and client
+ 
+ # Permanent
+ systemctl enable promiscuous@enp1s0 #<<<<<< on both the server and client
+ 
+ # Client specific config file
+ mkdir /etc/openvpn/ccd
+ 
+ su -c 'echo "iroute 10.0.0.0 255.255.255.0" >> /etc/openvpn/ccd/<client>'
+ 
+}
+
+
+# To give a static IP of 10.1.1.3 to a client
+
+su -c 'echo ifconfig-push 10.1.1.3 255.255.255.0 >> /etc/openvpn/ccd/<client>'
+
+
+
+# This is a working server configuration 
+{
+
+;local a.b.c.d
+port 1194
+;proto tcp
+proto udp
+;dev tap
+dev tun
+;dev-node MyTap
+ca /etc/openvpn/ca.crt
+cert /etc/openvpn/elmer.crt
+key /etc/openvpn/elmer.key  # This file should be kept secret
+dh /etc/openvpn/dh2048.pem
+server 111.222.0.0 255.255.255.0
+ifconfig-pool-persist ipp.txt
+;server-bridge 10.8.0.4 255.255.255.0 10.8.0.50 10.8.0.100
+;server-bridge
+push "route 192.168.1.0 255.255.255.0"
+;push "route 192.168.20.0 255.255.255.0"
+;push "dhcp-option DNS 208.67.222.222"    
+client-config-dir /etc/openvpn/ccd
+route 10.0.0.0 255.255.255.0
+;learn-address ./script
+;push "redirect-gateway def1 bypass-dhcp"
+;push "dhcp-option DNS 208.67.220.220"
+client-to-client
+;duplicate-cn
+keepalive 10 120
+tls-auth /etc/openvpn/ta.key 0 # This file is secret
+;cipher BF-CBC        # Blowfish (default)
+;cipher AES-128-CBC   # AES
+;cipher DES-EDE3-CBC  # Triple-DES
+comp-lzo
+;max-clients 100
+;user nobody
+;group nobody
+persist-key
+persist-tun
+status openvpn-status.log
+;log         openvpn.log
+;log-append  openvpn.log
+verb 3
+;mute 20
+
+
+}
+
+# This is a working client configuration 
+{
+
+client
+;dev tap
+dev tun
+;dev-node MyTap
+;proto tcp
+proto udp
+remote saldirect.dyndns.tv 1194
+;remote my-server-2 1194
+;remote-random
+resolv-retry infinite
+nobind
+;user nobody
+;group nobody
+persist-key
+persist-tun
+;http-proxy-retry # retry on connection failures
+;http-proxy [proxy server] [proxy port #]
+;mute-replay-warnings
+ca /etc/openvpn/ca.crt
+cert /etc/openvpn/bugs.crt
+key /etc/openvpn/bugs.key
+ns-cert-type server
+tls-auth /etc/openvpn/ta.key 1
+;cipher x
+comp-lzo
+verb 3
+;mute 20
+
+}
+
+# Start the server or client
+{
+	# Direct way
+  s openvpn /etc/openvpn/{server,client}.conf
+	
+	# Systemd way
+  s systemctl enable openvpn@{server,client}
+  s systemctl restart openvpn@{server,client}
+  
+}
+
+
+
+#######################################################################
+	
+# Resources
+
+https://wiki.archlinux.org/index.php/OpenVPN

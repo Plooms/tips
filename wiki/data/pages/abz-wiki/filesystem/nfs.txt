@@ -1,0 +1,68 @@
+#!/bin/bash
+
+}
+
+  # Using NFS4
+{
+
+  p nfs-utils
+
+  # Server
+  {
+
+  n /etc/exports
+
+  /mnt/C1 10.0.0.0/24(rw,sync,nohide,no_root_squash)
+  
+  sudo exportfs -ra
+  
+  }
+# Needed services
+{
+  # Server
+  {
+
+  sudo systemctl enable  rpc-idmapd
+  sudo systemctl enable  rpc-mountd
+  sudo systemctl enable  nfs-server
+  sudo systemctl restart rpc-idmapd
+  sudo systemctl restart rpc-mountd
+  sudo systemctl restart nfs-server
+
+
+  }
+
+  # Client
+  {
+  
+  sudo systemctl enable  rpc-statd
+  sudo systemctl enable  rpcbind
+  sudo systemctl restart rpc-statd
+  sudo systemctl restart rpcbind
+  sudo systemctl enable  rpc-gssd.service
+  sudo systemctl restart rpc-gssd.service
+
+  }
+
+}
+
+}
+
+  # Example fstab
+{
+  
+  # Server
+  /dev/Original/Media /mnt/Original ext4 auto,user 0 2
+
+  # Client
+  10.0.0.101:/mnt/Original /media/Original nfs4 noauto,user 0 0
+
+}
+
+
+
+#######################################################################
+	
+# Resources
+
+https://wiki.archlinux.org/index.php/NFS

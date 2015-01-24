@@ -1,0 +1,4 @@
+#!/bin/bash
+# Use GNU Parallel to parallelize processes
+  
+  find /folder -name "*.txt" | sort | parallel myCommand

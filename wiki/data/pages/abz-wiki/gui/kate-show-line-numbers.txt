@@ -1,0 +1,5 @@
+#!/bin/bash
+# Show the line numbers by default in kate
+
+
+  Settings > Configure Kate > Appearence > Borders > Show Line Number

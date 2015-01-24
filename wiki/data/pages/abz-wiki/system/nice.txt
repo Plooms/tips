@@ -1,0 +1,30 @@
+#!/bin/bash
+# Assign Low or High Priority to processes (NICE)
+
+
+# Display Nice Value of a Process (NI)
+
+ ps -fl -C "perl test.pl"
+      F S UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  STIME TTY          TIME CMD
+      0 R bala 6884  6424 99  80   0 -  1556 -      13:45 pts/3    00:05:54 perl test.pl
+
+# Launch a Program with Less Priority
+
+ sudo nice -19 perl test.pl
+ 
+# Launch a Program with High Priority NOTE:(2 Dashes --)
+
+ sudo nice --19 perl test.pl
+
+# Change the Priority of a Running Process
+
+ sudo renice -n -19 -p 3534
+
+
+# Change the Priority of All Processes that Belongs to a Group (wheel)
+
+ sudo renice -n 5 -g wheel
+
+# Change the Priority of All Processes Owned by User (abz)
+
+ sudo renice -n 5 -u abz

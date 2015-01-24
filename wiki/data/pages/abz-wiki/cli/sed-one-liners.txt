@@ -1,0 +1,88 @@
+#!/bin/bash
+
+
+# Remember -i replaces in place , without -i it outputs it to terminal
+
+
+# Insert text into specific line (#15)
+{
+ sed -i "15i text-to-insert-into-line-#15" file_name
+}
+ # Search for pattern & replace it with pattern2
+{
+ sed -i 's/pattern/pattern2/g' file_name
+} 
+ # Delete empty & whitespace lines
+{
+ sed -i '/^\s*$/d' file_name
+} 
+ # Display specific lines (100 & 200)
+{
+ sed -n  100,200p file_name
+}
+ # Compare different files (emulate diff)
+{
+ fgrep -vf file1 file2
+}
+ # Count duplicate lines (File Must Be sorted beforehand)
+{
+ cat file |sort |uniq -c
+}
+ # Delete duplicate lines (File Must Be sorted beforehand)
+{ 
+ cat file | sort | uniq > file2
+}
+ # delete all lines except duplicate lines (emulates "uniq -d").
+{
+ sed '$!N; s/^\(.*\)\n\1$/\1/; t; D' file
+}
+ # delete the first 10 lines of a file
+{
+ sed '1,10d' file
+}
+ # delete the last line of a file
+{
+ sed '$d' file
+}
+ # delete the last 2 lines of a file
+{
+ sed 'N;$!P;$!D;$d' file
+}
+ # delete lines matching pattern
+{
+ sed '/pattern/d' file
+}
+ # uncomment pattern
+{
+ sed -i '/Pattern/ s/^#//' file
+}
+ # comment pattern (add 'g' to the end if you want it to run on all instances of 'pattern')
+{
+ sed -i '/Pattern/ s/^/# /' file
+}
+ # replace complete line containing pattern with pattern2
+{
+ sed -i '/pattern/ s/*.*/pattern2/' file
+}
+ # add a new line at the top of the file
+{
+ sed '1i\
+ your text goes here' file_name > new_filename
+}
+ # add a new line at the bottom of the file
+{
+ sed '$a\
+ your text goes here' file_name > new_filename
+}
+ # delete leading whitespace (spaces, tabs) from front of each line
+{
+ sed 's/^[ \t]*//'                    # see note on '\t' at end of file
+}
+ # delete trailing whitespace (spaces, tabs) from end of each line
+{
+	 sed 's/[ \t]*$//'                    # see note on '\t' at end of file
+}
+ # delete BOTH leading and trailing whitespace from each line
+{
+	 sed 's/^[ \t]*//;s/[ \t]*$//'
+ }

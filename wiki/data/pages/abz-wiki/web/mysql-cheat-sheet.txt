@@ -1,0 +1,126 @@
+#!/bin/bash
+# Manage Mariadb-MySQL databases
+
+# Install
+ p mariadb mariadb-clients libmariadbclient
+
+ 
+# Setup 
+    sudo systemctl restart mysqld
+    sudo systemctl enable mysqld
+    mysql_secure_installation   
+    # Choose Y for default options
+    mysql -u root -p
+
+
+############################################
+# The Variables in this guide are for display only 
+#(you need to type the db name or table name when needed)
+DB_NAME="mydb"
+TABLE_NAME="movies"
+############################################
+
+# Create Database
+
+    # In MySQL console ,   MariaDB [(none)]>
+    
+    CREATE DATABASE "$DB_NAME";
+
+    # NOTE: change 'password' to the mysql root user password
+    GRANT ALL ON "$DB_NAME".* TO 'root'@'localhost' IDENTIFIED BY 'password';
+ 
+ 
+# Switch to the new database 
+    USE "$DB_NAME";
+
+
+# Create a Table
+  CREATE TABLE IF NOT EXISTS tv (
+    Name                 varchar(250)       NOT NULL,
+    Size_MB              int(15)            DEFAULT NULL, 
+    ResWidth             int(4)             DEFAULT NULL,
+    ResHeight            int(4)             DEFAULT NULL,
+    Watched              varchar(20)        DEFAULT NULL,  
+    Notes                varchar(600)       DEFAULT NULL,
+    Definition           varchar(4)         DEFAULT NULL,
+    Date                 varchar(10)        DEFAULT NULL,
+    PRIMARY KEY(Name)
+     );
+         
+         
+         
+# Print the columns of our new table
+ show columns in "$TABLE_NAME";
+ 
+ 
+# Insert data to table
+INSERT INTO "$TABLE_NAME" (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition) 
+VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTES", "$DEF")
+ON DUPLICATE KEY UPDATE 
+    Size_MB = "$SIZE",
+    ResWidth = "$RES1",
+    ResHeight = "$RES2",
+    Watched = "$WATCHED",
+    Notes = "$NOTES",
+    Definition = "$DEF";
+
+ 
+# View records and entries
+ SELECT * FROM "$TABLE_NAME";
+
+
+# Delete Tables
+ DROP TABLE "$TABLE_NAME";
+
+
+# Delete all Records
+ DELETE FROM "$TABLE_NAME";
+
+# Delete Records (specific)
+ DELETE FROM "$TABLE_NAME" where name like '%';
+
+# Show all databases
+ SHOW databases;
+
+
+# Show tables in database
+ SHOW tables;
+
+
+# Add columns to a table in a database
+ ALTER TABLE "$TABLE_NAME" ADD column_name column_type(180);
+
+
+# Alter (change) tables in database
+ ALTER TABLE "$TABLE_NAME" MODIFY column_name column_type(180);
+
+
+# Execute commands from the terminal
+ mysql -u root --password='pass' --database="$DB_NAME" --execute="select * from "$TABLE_NAME";"
+ 
+ 
+ 
+# Enter data from a script
+mysql --user=root --password="$DB_PASSWORD" movies << EOF
+INSERT INTO movies (Name,Size_MB,ResWidth,ResHeight,Watched,Notes,Definition) 
+VALUES ("$NAME", "$SIZE", "$RES1", "$RES2", "$WATCHED", "$NOTES", "$DEF")
+ON DUPLICATE KEY UPDATE 
+    Size_MB = "$SIZE",
+    ResWidth = "$RES1",
+    ResHeight = "$RES2",
+    Watched = "$WATCHED",
+    Notes = "$NOTES",
+    Definition = "$DEF";
+EOF
+
+ 
+# Query examples
+
+	select * from "$TABLE_NAME" where Size='1000' ;
+	select * from "$TABLE_NAME" order by column_name;
+	
+	# search for files beginning with ASS ( Use an ' not " to make it work)
+	select * from "$TABLE_NAME" where column_name LIKE 'ASS%'; 
+	
+	# search for files containing ASS
+	select * from "$TABLE_NAME" where column_name LIKE '%ASS%'; 

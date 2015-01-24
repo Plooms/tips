@@ -1,0 +1,28 @@
+#!/bin/bash
+
+$ mkdir -p media/Shows/{A..H}/Finished
+$ tree media/
+
+media/
+`-- Shows
+    |-- A
+    |   `-- Finished
+    |-- B
+    |   `-- Finished
+    |-- C
+    |   `-- Finished
+    |-- D
+    |   `-- Finished
+    |-- E
+    |   `-- Finished
+    |-- F
+    |   `-- Finished
+    |-- G
+    |   `-- Finished
+    `-- H
+        `-- Finished
+
+17 directories, 0 files
+
+
+

@@ -1,0 +1,100 @@
+#!/bin/bash
+# Move your system to a VM
+
+
+
+# Create the container 
+
+	# Considering that you need the combined size of /root,/home,/us/lo/bin,webapps)
+
+	sudo mkdir /media/Backup
+	sudo fallocate -l 10GB -o 1024 /media/Backup/backup.img
+
+
+# Setup the container
+
+	sudo losetup /dev/loop5 /media/Backup/backup.img
+
+
+# Partition the container
+	
+	# Slap a partition table on it (msdos) and a filesystem (e.g."ext4")
+	sudo gparted /dev/loop5
+
+
+# Transfer the system
+
+	sudo mkdir /mnt/Virtual
+	sudo mount /dev/loop5p1 /mnt/Virtual
+	sudo rsync -avhAXP /* /mnt/Virtual/ --exclude={'/dev/*','/proc/*','/sys/*','/tmp/*','/run/*','/mnt/*/*','/media/*/*','/lost+found','/home/*/.gvfs'}
+
+
+# Convert the container to a compatible format
+
+	cd /media/Backup
+	sudo VBoxManage convertfromraw --format VMDK backup.img backup.vmdk
+	sudo chmod 777 backup.vmdk
+
+# Detach the container & clean up
+
+	sudo umount /mnt/Virtual
+	sudo losetup -d /dev/loop5p1
+	sudo losetup -d /dev/loop5
+	sudo rm /media/Backup/backup.img
+	sudo rmdir /media/Backup
+	
+	
+	
+	
+#######################################################################
+# NOTE: '(Inside Virtualbox)'
+
+# Chroot and reinstall the bootloader
+
+	# Boot a Live CD (VM) and mount the vmdk in Virtualbox
+
+	sudo mount /dev/sda1 /mnt
+	sudo arch-chroot /mnt
+
+
+# Install Grub
+
+	sudo grub-install /dev/sda
+	sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+
+# Adjust the fstab (like this)
+
+/dev/sda1    /   ext4   defaults,relatime      0   1
+
+
+# Disable Xorg-related files
+
+	sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf.bak
+	sudo mv /etc/X11/xorg.conf.d/10-monitor /etc/X11/xorg.conf.d/10-monitor.bak
+
+
+# Re-generate the initramfs image
+	
+	sudo mkinitcpio -p linux
+
+
+# Exit the chroot
+
+	exit
+
+
+# Shutdown the VM
+
+	poweroff
+
+
+# After rebooting into the VM
+p virtualbox-guest-utils
+sce vboxservice
+
+#######################################################################
+	
+# Resources
+
+https://wiki.archlinux.org/index.php/Moving_an_existing_install_into_%28or_out_of%29_a_virtual_machine

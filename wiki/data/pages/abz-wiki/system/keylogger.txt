@@ -1,0 +1,11 @@
+#!/bin/bash
+# Install a keylogger on Linux
+
+# Install
+  p logkeys
+
+# Start the key logger (-s = start) (-o = log file)
+  sudo logkeys -s -o /tmp/keylogs
+
+
+  

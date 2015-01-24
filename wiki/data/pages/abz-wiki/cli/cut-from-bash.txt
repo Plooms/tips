@@ -1,0 +1,11 @@
+#!/bin/bash
+# Show directories and cut the crap
+
+# cut from byte 14-19 and from 37-128
+
+ls -gloRhBSc --group-directories-first | cut -b 14-19,37-128
+
+
+# cut field 1 from output >>> ( : ) is the delimiter
+
+ls -1 | cut -d: -f1

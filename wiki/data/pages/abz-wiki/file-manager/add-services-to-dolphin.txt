@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Add service menu scripts to Dolphin Right-Click
+
+
+ sudo nano ~/.kde4/share/kde4/services/<Script-Name>.desktop
+
+ 
+ 
+ 
+# The most important line is the (Exec) line & the (MimeType) line
+
+#Example
+
+{ # Move-to-Shared
+
+[Desktop Entry]
+
+Type=Service
+
+MimeType=application/octet-stream;
+
+Icon=folder-red
+
+Actions=Move-to-Shared
+
+X-KDE-Priority=TopLevel
+
+ServiceTypes=KonqPopupMenu/Plugin
+
+[Desktop Action Move-to-Shared]
+
+Exec=mv %U ~/Dropbox/"Shared (1)"/
+
+Icon=folder-red
+
+Name=Move-to-Shared
+
+}
+
+{ # Move-p2p # Notice No (MimeType) = to make it work on Dirs
+
+
+[Desktop Entry]
+
+Type=Service
+
+Icon=folder-red
+
+Actions=Move-p2p
+
+X-KDE-Priority=TopLevel
+
+ServiceTypes=KonqPopupMenu/Plugin,inode/directory,inode/directory-locked
+
+[Desktop Action Move-p2p]
+
+Exec=mv %U/*.torrent ~/qBT_dir/shared-folder/
+
+Icon=folder-red
+
+Name=Move-p2p

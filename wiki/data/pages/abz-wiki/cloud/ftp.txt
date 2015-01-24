@@ -1,0 +1,91 @@
+#!/bin/bash
+# Create an FTP server
+
+# Install
+	p vsftpd
+	
+	
+# Edit settings
+	sudo nano /etc/vsftpd.conf
+	
+########################################################################
+# Enabling uploading
+write_enable=YES
+
+
+########################################################################
+# Local user login
+local_enable=YES
+
+
+########################################################################
+# Anonymous login
+anonymous_enable=YES
+no_anon_password=YES
+anon_max_rate=30000 
+anon_root=/example/directory/
+
+
+########################################################################
+# Chroot jail
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd.chroot_list
+
+#The "chroot_list_file" variable specifies the file which contains users
+#that are jailed, For a more restricted environment, one can specify:
+chroot_local_user=YES
+
+#This will make local users jailed by default. In this case, the file
+# specified by "chroot_list_file" lists users that are not in a chroot jail. 
+
+#Choose the FTP root dir
+local_root=/example/directory/
+
+#NOTE: The root dir must be unwritable
+sudo chmod 555 /example/directory/
+
+# This is the actual folder that is going to be shared
+sudo mkdir /example/directory/FTP
+
+########################################################################
+#Limiting user login
+#It's possible to prevent users from logging into the FTP server by adding:
+
+userlist_enable=YES
+userlist_file=/etc/vsftpd.user_list
+
+# "userlist_file" now specifies the file which lists users that are not 
+#able to login, If you only want to allow certain users to login, add:
+
+userlist_deny=NO
+
+# userlist_file will now contain users that are allowed to login
+
+
+########################################################################
+# Limiting connections
+local_max_rate=1000000 # Maximum data transfer rate in bytes per second
+max_clients=50         # Maximum number of clients that may be connected
+max_per_ip=2           # Maximum connections per IP
+
+########################################################################
+# Port configurations
+listen_port=21
+
+# For private FTP servers that are exposed to the web it's recommended
+# to change the listening port to something other than the standard port 21.
+
+
+########################################################################
+# Configuring iptables
+
+ iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+
+
+########################################################################
+
+
+# Enable the service
+	sudo systemctl enable vsftpd.service
+	sudo systemctl restart vsftpd.service
+	

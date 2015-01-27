@@ -293,11 +293,14 @@ System Settings > Input devices > Keyboard
 
 [switching policy] = global
 
-[shortcuts] = Main=alt-shift
+[shortcuts] = Main = alt-shift
 
 (check) configure layouts
 
 [add layouts]
+us  | shortcut = Ctrl+Alt+0
+ara | shortcut = none
+
 #######################################################################
 
 

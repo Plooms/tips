@@ -67,7 +67,7 @@ increase opacity > ctrl-alt-Q
 maximize > ctrl-alt-7
 minimize > ctrl-alt-m
 quick tile window to the left > ctrl-alt-1
-quick tile window to the right > ctrl-alt-2
+quick tile window to the right > ctrl-alt-4
 window to next screen > ctrl-alt-8
 zoom in > ctrl-alt-5
 zoom out > ctrl-alt-6

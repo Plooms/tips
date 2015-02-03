@@ -211,6 +211,7 @@ System Settings > Window Behaviour > Window Behaviour
 
 Focus Stealing Prevention = None
 
+(check) Click raises active window
 (check) separate screen focus
 (check) Active Screen follows mouse
 
@@ -253,7 +254,7 @@ System Settings > Window Behaviour > Window rules
  
 System Settings > Workspace Behaviour > Screen edges
 #######################################################################
-[top right/left] : Present windows (all desktops)
+[top right/left] : None (as Present windows is done by easygestures)
 
 [bottom right] : show dashboard
 

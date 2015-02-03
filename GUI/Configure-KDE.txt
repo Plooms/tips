@@ -62,7 +62,7 @@ System Settings > Shortcuts & Gestures > Global Keyboard Shortcuts
 [KDE component: KWin]
 actual size > ctrl-alt-9
 close window > alt-f4
-decrease opacity > ctrl-alt-w
+decrease opacity > ctrl-alt-r
 increase opacity > ctrl-alt-Q
 maximize > ctrl-alt-7
 minimize > ctrl-alt-m

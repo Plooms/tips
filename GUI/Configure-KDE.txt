@@ -290,7 +290,7 @@ System Settings > Input devices > Keyboard
 (check) show layout indicator
 (check) show for single layouts
 
-* show label on flag
+* show label
 
 [switching policy] = global
 
@@ -299,8 +299,8 @@ System Settings > Input devices > Keyboard
 (check) configure layouts
 
 [add layouts]
-us  | shortcut = Ctrl+Alt+0
-ara | shortcut = none
+us  | Label = EN | shortcut = Ctrl+Alt+0
+ara | Label = AR | shortcut = none
 
 #######################################################################
 

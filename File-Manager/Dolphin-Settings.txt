@@ -30,7 +30,7 @@ Settings > Configure Dolphin > Navigation
 (*)
 ( )
 
-_/
+x
 x
 
 
@@ -112,7 +112,6 @@ Preview
 Split
 Show in Groups (shortname= Show Groups)
 Icons
-Compact
 Details
 Sort By
 

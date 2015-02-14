@@ -27,7 +27,7 @@ sudo nano /etc/netctl/LAN
 
 Description='A basic static ethernet connection'
 # change this to your interface name
-Interface=enp2s0   <<<<<<<<< \"change this to your interface name\"
+Interface=enp2s0
 Connection=ethernet
 IP=static
 Address=('10.0.0.3/24')

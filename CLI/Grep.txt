@@ -39,3 +39,7 @@
   df | grep -E 'shm|run|home'
   
 }
+
+# Grep between patterns
+echo "123456" | grep -o -P '(?<=1).*(?=6)'
+# will print out "2345"

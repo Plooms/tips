@@ -1,0 +1,6 @@
+#!/bin/bash
+# Remove Metadata from video files
+
+
+         this v = "path to video file"                       v = "the title of the file"
+ffmpeg -i "$file" -map_metadata -1 -c copy -metadata title="$name" "$out"

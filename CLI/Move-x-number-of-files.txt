@@ -1,5 +1,5 @@
 #!/bin/bash
-#Move x number of files in (head -20000)
+# Move x number of files in (head -20000)
 
 
 # Method 1 (shit)

@@ -376,7 +376,7 @@ yaourt --noconfirm -S --needed iptables squid
 yaourt --noconfirm -S --needed firefox pidgin pidgin-libnotify dropbox \
 flashplugin jre vidalia google-chrome onboard pkgfile redshift \
 multipath-tools-git cryptsetup easystroke xbrightness xautomation \
-xdotool kdenetwork-krdc gnome-themes-standard
+xdotool kdenetwork-krdc gnome-themes-standard clipit
 
 # xte = xautomation
 

@@ -5,8 +5,8 @@
   p iperf
   
   
-  # Server
+  # Server 
   sudo iperf -s
   
-  # Client
+  # Client (10.0.0.3 is server ip)
   sudo iperf -c 10.0.0.3 -d

@@ -7,4 +7,10 @@
 
  mencoder -oac copy -ovc copy -idx -o output.avi file1.avi file2.avi
  
+ # if that didn't work ,try:
+ 
+ 
+ cat file1.mkv file2.mkv > file.mkv
+ 
+ 
  

@@ -41,5 +41,16 @@
 }
 
 # Grep between patterns
-echo "123456" | grep -o -P '(?<=1).*(?=6)'
-# will print out "2345"
+{
+	echo "123456" | grep -o -P '(?<=1).*(?=6)'
+	# will print out "2345"
+}
+
+# Grep a certain group of characters (wildcards)
+# Use the "." for a single character match, "*" for everything
+{
+	
+	# this will get the filename upto (SxxExx) 'Season # and Episode #'
+	ls | grep  -o "\<.*S..E..\>"
+
+}

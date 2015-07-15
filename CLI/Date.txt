@@ -28,6 +28,9 @@ date +%Y-%m-%d-%p-%H-%M
 #Previous Minute , this Hour and day:
 date +%Y-%m-%d-%p-%H-%M -d "1 minute ago"
 
+# This day,hour,minute & second
+date +%Y-%m-%d-%p-%H-%M-%S
+
 #29 days ago in ISO-8601 format
 date -I -d "29 days ago"
 

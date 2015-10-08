@@ -103,7 +103,7 @@ System Settings > Desktop Effects > All effects
 #######################################################################
 [zoom] options:  
 
-zoom factor =  1.80 
+Zoom > zoom factor =  1.80 
 Pointer = keep
 tracking = proportional
 (check) enable focus

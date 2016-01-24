@@ -1,12 +1,16 @@
 #!/bin/bash
 
-# Good Date Format 
+# Good Date Formats
 
 date '+%A - %d %B %Y - %T'
+date '+%A - %d %b %Y - %T'
+date '+%A - %d %m %Y - %T'
 
 
-# Example
+# Examples
 echo $(date '+%A - %d %B %Y - %T')
+echo $(date '+%A - %d %b %Y - %T')
+echo $(date '+%A - %d %m %Y - %T')
 
 
 ######################### Format for scripts ###########################

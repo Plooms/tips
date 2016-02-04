@@ -142,7 +142,7 @@
   sudo mdadm --zero-superblock /dev/sdXX
 
  # NOTE: if you reuse the removed disk in another setup without zeroing the superblock 
- # you will LOSE all your data next boot 
+ # you will LOSE all your data next boot
 
 }
 

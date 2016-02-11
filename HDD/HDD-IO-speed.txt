@@ -8,7 +8,7 @@ sudo hdparm -tT /dev/sdXX
 
 # or (tests filesystem speeds)
 
-  # Create a file named 'ass' = 1GB   "Choose either zero or urandom"
+  # Create a file named 'ass' = 10GB   "Choose either zero or urandom"
     
     # Write test
     dd if=/dev/zero of=/mnt/Original/ass bs=1G count=10

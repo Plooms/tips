@@ -22,11 +22,11 @@
   # Server
   {
 
-  sudo systemctl enable  rpc-idmapd
-  sudo systemctl enable  rpc-mountd
+  sudo systemctl enable  nfs-idmapd
+  sudo systemctl enable  nfs-mountd
   sudo systemctl enable  nfs-server
-  sudo systemctl restart rpc-idmapd
-  sudo systemctl restart rpc-mountd
+  sudo systemctl restart nfs-idmapd
+  sudo systemctl restart nfs-mountd
   sudo systemctl restart nfs-server
 
 

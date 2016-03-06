@@ -40,3 +40,7 @@
 
   sudo mount /dev/mapper/sometest /mnt/encrypted
 
+
+
+ # To Detach the container if you are done
+  sudo losetup -d /dev/loop0

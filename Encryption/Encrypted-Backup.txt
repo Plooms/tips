@@ -29,7 +29,7 @@
 # BACKUP:
 {
   
-  # Backup /home/user/ >> /home/user/backup/ [file] (v9 is verbose level 0-9 low-high) (volumesize=250 MB default is 25 MB
+  # Backup /home/user/ >> /home/user/backup/ [file] (v9 is verbose level 0-9 low-high)(volumesize=250 MB default is 25 MB)
   
   
   duplicity -v9 --volsize 250 /home/user/ file:///home/user/backup/

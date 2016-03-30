@@ -1,5 +1,8 @@
 #!/bin/bash
-# using wget
+# using sed to match an episode name (to use for kat-hunter)
 
-# Download a directory recursively from a webpage
-wget -c -k --random-wait -r -p -E -e robots=off -U mozilla "$URL"
+
+ls | sed -n -e "s/\(.*S[0-9][0-9]E[0-9][0-9]\).*/\1/p"
+
+# This will find "VICE.S04E06.720p.HDTV.x264-BATV"
+# and change it to "VICE.S04E06"

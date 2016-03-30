@@ -6,3 +6,11 @@ ls | sed -n -e "s/\(.*S[0-9][0-9]E[0-9][0-9]\).*/\1/p"
 
 # This will find "VICE.S04E06.720p.HDTV.x264-BATV"
 # and change it to "VICE.S04E06"
+
+
+
+#######################################################################
+	
+# Resources
+
+http://unix.stackexchange.com/questions/24140/return-only-the-portion-of-a-line-after-a-matching-pattern

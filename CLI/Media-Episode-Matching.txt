@@ -2,7 +2,7 @@
 # using sed to match an episode name (to use for kat-hunter)
 
 
-ls | sed -n -e "s/\(.*S[0-9][0-9]E[0-9][0-9]\).*/\1/p"
+ls | sed -n -e "s/\(.*[Ss][0-9][0-9][Ee][0-9][0-9]\).*/\1/p"
 
 # This will find "VICE.S04E06.720p.HDTV.x264-BATV"
 # and change it to "VICE.S04E06"

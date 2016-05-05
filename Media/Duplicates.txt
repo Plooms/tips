@@ -11,3 +11,5 @@ find NAS/Shows -iname "*duplicate*mpeg" \
 | cut -d"/" -f1 \
 | rev \
 | while read a ; do find NAS/Shows -iname "$a*" -size +10M -exec du -hs {} \; ; echo "" ;done
+
+

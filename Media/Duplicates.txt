@@ -4,7 +4,7 @@
 
 # copy pasta all this in terminal
 
-find NAS/Shows -iname "*srt*duplicate*mpeg" -size -2M -delete
+find NAS/Shows -iname "*srt*duplicate*mpeg" -size -2M -delete -print
 find NAS/Shows -iname "*duplicate*mpeg" \
 | cut -d"]" -f1 \
 | rev \

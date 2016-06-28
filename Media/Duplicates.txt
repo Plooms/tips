@@ -10,7 +10,7 @@ find NAS/Shows -iname "*duplicate*mpeg" \
 | rev \
 | cut -d"/" -f1 \
 | rev \
-| while read a ; do find NAS/Shows -iname "$a*" -size +10M -exec du -hs {} \; ; echo "" ;done
+| while read a ; do find NAS/Shows -iname "$a*" -size +10M -printf "\n\nrm -v '%p'\n" -exec du -hs {} \; | cut -f 1 ;done
 
 
 # remove duplicates from filename

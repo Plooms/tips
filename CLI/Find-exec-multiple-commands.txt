@@ -2,7 +2,7 @@
 # How to find files and execute multiple commands on them
 
 
-find -type d -iname subs -exec sh -c 'command1;command2;command3' \;
+find -type d -iname subs -exec sh -c 'command1 {};command2 {};command3 {}' \;
 
 # Example to move all files from 'subs' to parent of 'subs'
 find -type d -iname subs -exec sh -c 'parent="$(dirname "{}")";mv -v "{}"/* "$parent"/' \;

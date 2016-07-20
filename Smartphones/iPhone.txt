@@ -1,0 +1,658 @@
+#!/bin/bash
+# Install Archlinux from a running system
+
+
+
+-------------------------------------------
+
+  # Set The User Variable
+  MYUSER='sal'
+  
+  # Set the install Location Variable
+  INSTALL_POINT='/mnt/arch'
+
+  # Set The HDD Variables
+  
+  HDD_MASTER='/dev/sdb'
+
+  HDD_ROOT='/dev/mapper/S0-ROOT'
+
+  HDD_BOOT='/dev/sdb5'
+
+  HDD_HOME='/dev/mapper/S0-HOME'
+  
+  HDD_VAR='/dev/mapper/S0-VAR'
+  
+  HDD_BIN='/dev/mapper/S0-BIN'
+  
+  HDD_WEBAPPS=''
+
+  
+  # Set The Variables if using a Container
+  HDD_MASTER='/dev/loop1'
+  
+  HDD_ROOT='/dev/mapper/loop1p1'
+
+
+-------------------------------------------
+
+
+
+# Install Arch Scripts
+{ 
+ 
+  sudo pacman -S --needed arch-install-scripts
+
+}
+
+# Check the partitions you want to install to
+{
+
+  sudo fdisk -l
+  
+  # or
+  
+  sudo lsblk -f
+  
+}
+
+# Partition disks
+{ 
+ 
+  sudo cfdisk $HDD_MASTER
+
+}
+
+# Create a filesystem
+{
+
+  sudo mkfs.ext4 $HDD_ROOT
+
+  
+  # Optional
+  # Beware
+  # Be Careful (needed in new system only)
+\# sudo mkfs.ext4 $HDD_BOOT 
+\# sudo mkfs.ext4 $HDD_VAR
+\# sudo mkfs.ext4 $HDD_BIN
+\# sudo mkfs.ext4 $HDD_WEBAPPS
+  # Optional
+  # Beware
+  # Be Careful (needed in new system only)
+
+  
+}
+
+# mount $HDD_ROOT to /mnt (optionally, u need to mount /home /boot, to "$INSTALL_POINT"/home,boot)
+{
+  sudo mkdir -v "$INSTALL_POINT"
+  sudo mount $HDD_ROOT "$INSTALL_POINT"
+
+  #Optional
+  sudo mkdir "$INSTALL_POINT"/boot
+  sudo mkdir "$INSTALL_POINT"/home
+  sudo mkdir "$INSTALL_POINT"/var
+  sudo mkdir -p "$INSTALL_POINT"/usr/local/bin
+  sudo mkdir -p "$INSTALL_POINT"/usr/share/webapps
+
+
+  sudo mount $HDD_BOOT "$INSTALL_POINT"/boot/
+  sudo mount $HDD_HOME "$INSTALL_POINT"/home/
+  sudo mount $HDD_VAR "$INSTALL_POINT"/var
+  sudo mount $HDD_BIN "$INSTALL_POINT"/usr/local/bin
+  sudo mount $HDD_WEBAPPS "$INSTALL_POINT"/us/share/webapps
+
+}
+ 
+# Install the base system
+{
+
+  sudo pacstrap "$INSTALL_POINT"/ base base-devel grub-bios os-prober sudo openssh rsync yaourt
+ 
+}
+
+# generate the fstab
+{
+
+  su -c "genfstab -pU "$INSTALL_POINT" >> "$INSTALL_POINT"/etc/fstab"
+ 
+}
+
+# Update the system and clear the cache , to avoid cluttering the new installation
+  sudo pacman -Syu ; sudo pacman -Sc
+
+# Sync Packages to New system , to improve install speed
+  sudo rsync -avhHP /var/cache/pacman/pkg/ "$INSTALL_POINT"/var/cache/pacman/pkg/
+
+
+
+# copy the scripts to the new system
+{
+
+  sudo rsync -avuhHP /usr/local/bin/ "$INSTALL_POINT"/usr/local/bin/
+ 
+} 
+
+# copy the configs to the new system
+{
+
+  sudo rsync -avhHPL /etc/yaourtrc "$INSTALL_POINT"/etc/
+ 
+  sudo rsync -avhHPL /etc/pacman.conf "$INSTALL_POINT"/etc/
+ 
+  sudo rsync -avhHPL /etc/pacman.d/mirrorlist "$INSTALL_POINT"/etc/pacman.d/
+  
+  sudo rsync -avhHPL /etc/profile "$INSTALL_POINT"/etc/
+   
+  sudo rsync -avhHPL /etc/modules-load.d/ "$INSTALL_POINT"/etc/modules-load.d/
+  
+  sudo rsync -avhHPL /etc/ssh/ "$INSTALL_POINT"/etc/ssh/
+  
+  sudo rsync -avhHPL /etc/slim.conf "$INSTALL_POINT"/etc/
+  
+  sudo rsync -avhHPL /etc/openvpn/ "$INSTALL_POINT"/etc/openvpn/
+  
+  sudo rsync -avhHPL /etc/hosts "$INSTALL_POINT"/etc/
+  
+  sudo rsync -avhHPL /etc/bash.bashrc "$INSTALL_POINT"/etc/
+  
+  sudo rsync -avhHPL /etc/resolv.conf "$INSTALL_POINT"/etc/
+  
+  sudo rsync -avhHPL /home/"$MYUSER"/.zshrc "$INSTALL_POINT"/root/.zshrc
+
+} 
+
+# chroot into the new system
+{
+ 
+ sudo arch-chroot "$INSTALL_POINT"/
+ 
+}
+
+
+-------------------------------------------
+  
+  # Set The User Variable (in the Chroot)
+  MYUSER='sal'
+  
+  # Set The HDD Variables (in the Chroot)
+  HDD_MASTER='/dev/sdb'
+  
+  # Set The Container Variables (in the Chroot)
+  HDD_MASTER='/dev/loop3'
+
+-------------------------------------------
+
+
+# Configure the system (Manually - enter each command individually)
+{
+
+
+  echo "
+  en_US ISO-8859-1
+  en_US.UTF-8 UTF-8
+  ar_SA.UTF-8 UTF-8
+  ar_SA ISO-8859-6
+  " >> /etc/locale.gen
+
+
+  locale-gen
+ 
+  export LANG=en_US.UTF-8
+ 
+ # Optional
+  nano /etc/mkinitcpio.conf # If using a seperate /boot ; mount it first;skip ths step if /boot is seperate & not mounted
+ 
+ # Required 
+ #+ If using a seperate /boot ; mount it first;skip this step if /boot is in the same root & not mounted
+  
+  passwd
+  
+  mkinitcpio -p linux
+ 
+  echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+  useradd -G wheel -m -u 1000 -U -s /bin/bash $MYUSER
+ 
+  sudo rsync -avhHPL /root/.zshrc /home/"$MYUSER"/
+ 
+  passwd $MYUSER
+
+ 
+} 
+
+# Configure the system 
+{ 
+  
+  # fix makepkg.conf (cores+1  -j2= 1 core)
+ sudo nano /etc/makepkg.conf
+	# Change -j2 to -j5 for Quad cores
+
+
+  # Timezone
+  ln -s /usr/share/zoneinfo/Asia/Riyadh /etc/localtime
+
+
+  # Xinitrc
+  echo "exec dbus-launch startkde" > /home/"$MYUSER"/.xinitrc
+
+  echo "exec dbus-launch startkde" > /root/.xinitrc
+
+}
+
+# Initialize Pacman
+{
+
+  pacman-key --init; pacman-key --populate archlinux
+
+}
+
+# Install xorg - Nvidia - XFCE
+{
+
+  pacman --noconfirm -S --needed xorg xorg-apps xorg-drivers
+  
+  pacman --noconfirm -R xf86-video-ati ; pacman --noconfirm -R ati-dri
+  
+  pacman --noconfirm -R xf86-video-intel ; pacman --noconfirm -R intel-dri
+  
+  pacman --noconfirm -R glamor-egl
+  
+  pacman --noconfirm -R xf86-video-nouveau ; pacman --noconfirm -R nouveau-dri
+    
+  pacman -S nvidia-340xx ; pacman -S --noconfirm --needed xfce4 xfce4-goodies
+
+
+}
+
+# edit ulimit
+{
+
+echo "
+"$MYUSER"                  hard nofile 10000
+"$MYUSER"                  soft nofile 10000
+" >> /etc/security/limits.conf
+
+}
+
+
+
+# Optional (disable systemd logging)
+ sudo nano /etc/systemd/journald.conf
+    
+    Storage=none
+    
+	#    "volatile", "persistent", "auto" and "none". If "volatile",
+	#     journal log data will be stored only in memory, i.e. 
+	#     below the /run/log/journal hierarchy (which is created if needed). 
+	#     If "persistent", data will be stored preferably on disk, i.e. 
+	#     below the /var/log/journal hierarchy (which is created if needed),
+	#     with a fallback to /run/log/journal (which is created if needed),
+	#     during early boot and if the disk is not writable. "auto" is 
+	#     similar to "persistent" but the directory /var/log/journal is
+	#     not created if needed, so that its existence controls where log
+	#     data goes. "none" turns off all storage, all log data received 
+	#     will be dropped. Forwarding to other targets, such as 
+	#     the console, the kernel log buffer or a syslog daemon will 
+	#     still work however. Defaults to "auto".
+
+
+
+
+# Optional ( mkdir /media/R1 + add to fstab)
+{
+
+mkdir /media/R1
+
+# To prevent writing when unmounted (execute it while not mounted)
+sudo chattr +i /media/R1
+
+
+
+echo "
+
+
+#NFS
+#192.168.1.9:/mnt/S1 /media/S1 nfs4 auto,user,noatime 0 0
+
+Gluster
+C1:/R1    /media/R1       glusterfs       defaults        0 0
+
+" >> /etc/fstab
+
+}
+
+# Install Packages
+{
+
+  # Always Required
+  {
+
+yaourt --noconfirm -S --needed arch-install-scripts reflector \
+python2-gobject zsh dbus git slim x11vnc \
+procmail bash-completion gnome-keyring seahorse wmctrl zenity \
+gparted gpart sshfs terminator nano ntp dialog wget libnotify \
+nfs-utils x2goserver x2goclient beep parallel
+
+  }
+
+  # Network
+  {
+
+yaourt --noconfirm -S --needed networkmanager network-manager-applet \
+networkmanager-pptp openvpn btsync btsync-autoconfig \
+networkmanager-openvpn sshuttle kdeplasma-applets-networkmanagement
+
+  }
+
+  # CLI utils
+  {
+
+yaourt --noconfirm -S --needed tree htop iotop nethogs nettop \
+ncdu screen smartmontools iperf xclip
+
+  }
+  
+    # File Systems
+  {
+
+yaourt --noconfirm -S --needed dosfstools jfsutils \
+exfat-utils e2fsprogs btrfs-progs reiserfsprogs xfsprogs ntfs-3g
+
+  }
+
+  
+  # Router
+  {
+
+yaourt --noconfirm -S --needed iptables squid
+
+  }
+  
+
+  # Everyday Use (Main PC)
+  {
+
+yaourt --noconfirm -S --needed firefox pidgin pidgin-libnotify dropbox \
+flashplugin jre vidalia google-chrome onboard pkgfile redshift \
+multipath-tools-git cryptsetup easystroke xbrightness xautomation \
+xdotool kdenetwork-krdc gnome-themes-standard clipit
+
+# xte = xautomation
+
+
+  }
+
+  # Fonts
+  {
+
+yaourt --noconfirm -S --needed ttf-amiri ttf-ms-fonts
+		#optional ttf-arabeyes-fonts (was broken last time)
+
+  }
+
+  # Editors & Viewers
+  {
+
+yaourt --noconfirm -S --needed kdesdk-kate kdegraphics-okular \
+kdebase-kwrite geany geany-plugins libreoffice libreoffice-en-GB \
+libreoffice-en-US
+
+  }
+
+  # Renamers
+  {
+
+yaourt --noconfirm -S --needed pyrenamer tvnamer-git
+
+  }
+
+  # Language
+  {
+
+yaourt --noconfirm -S --needed hyphen-en hunspell-en \
+libreoffice-extension-languagetool 
+
+
+  }
+
+  # Encryption
+  {
+
+yaourt --noconfirm -S --needed ecryptfs-utils encfs truecrypt
+
+  }
+
+  # Virtualization
+  {
+
+yaourt --noconfirm -S --needed virtualbox virtualbox-host-modules \
+virtualbox-guest-iso virtualbox-guest-utils virtualbox-guest-modules \
+libvirt virt-manager
+
+  }
+
+  # Sound
+  {
+
+yaourt --noconfirm -S --needed pulseaudio pulseaudio-alsa alsa-utils \
+pavucontrol 
+
+  }
+
+  # Archiving
+  {
+
+yaourt --noconfirm -S --needed unrar rar zip unzip file-roller 
+
+  }
+
+  # Imaging
+  {
+
+yaourt --noconfirm -S --needed gimp
+
+  }
+
+  # Misc
+  {
+
+yaourt --noconfirm -S --needed python-keybinder unetbootin 
+
+  }
+
+  # Media
+  {
+
+yaourt --noconfirm -S --needed vlc xbmc lsb-release pms
+
+  }
+
+  # Video Codecs
+  {
+
+yaourt --noconfirm -S --needed mencoder ffmpeg gstreamer0.10-plugins \
+codecs64
+
+  }
+
+  # Video Editors & Transcoders
+  {
+
+yaourt --noconfirm -S --needed openshot handbrake
+
+  }
+
+  # p2p
+  {
+
+yaourt --noconfirm -S --needed sabnzbd qbittorrent sickbeard-git \
+couchpotato-git
+
+  }
+
+  # Webserver
+  {
+
+yaourt --noconfirm -S --needed apache php php-apache mariadb
+
+  }
+
+  # The Mother load
+  {
+	  
+		### Deprecated ###
+  
+  }
+
+}
+
+# Enable Services
+{
+
+  # Needed
+  {
+  
+  sudo systemctl enable kdm.service
+
+  sudo systemctl enable NetworkManager.service
+	# If there is a Network auto mount only e.g (nfs or gluster)
+  sudo systemctl enable NetworkManager-wait-online.service
+
+  sudo systemctl enable cronie.service
+
+  sudo systemctl enable rpcbind.service
+
+  sudo systemctl enable rpc-statd.service
+
+  sudo systemctl enable sshd.service
+
+  sudo systemctl enable ntpd.service
+  
+  }
+
+  # Optional Services
+  {
+  
+  # Misc (speed boot up of apps on HDDs)
+  {
+
+  sudo systemctl enable systemd-readahead-collect.service
+
+  sudo systemctl enable systemd-readahead-replay.service
+
+  } 
+  
+  # Webserver 
+  {
+  
+  sudo systemctl enable httpd.service
+
+  }
+
+  # Router
+  {
+
+  sudo systemctl enable iptables.service
+
+  sudo systemctl enable squid.service
+
+  }
+
+  # NAS
+  {
+
+  sudo systemctl enable couchpotato.service
+
+  sudo systemctl enable sickbeard.service
+
+  sudo systemctl enable rpc-idmapd.service
+
+  sudo systemctl enable rpc-mountd.service
+
+  sudo systemctl enable lvm-monitoring.service
+
+  sudo systemctl enable nfsd.service
+
+  sudo systemctl enable mdadm.service
+
+  }
+
+  # Virtualbox Client
+  {
+
+  sudo systemctl enable vboxservice.service
+
+  }
+
+  }
+
+}
+
+# Configure fstab again and make sure to add if missing /home & /boot
+{
+
+  sudo blkid
+ 
+  nano /etc/fstab
+ 
+ #OPTIONAL: If genfstab didn't work
+ # then, Add this if it is a container
+ UUID=xxxxxxxxxxxxxxxxxxxxxxxx / ext4 rw,defaults 0 1
+
+ 
+} 
+ 
+# Install grub
+{
+
+  sudo grub-install $HDD_MASTER
+
+ # if using a seperate /boot on the same computer, this is to be done in parent system
+
+  sudo grub-mkconfig -o /boot/grub/grub.cfg    
+ 
+}
+
+# Change Shell
+{
+
+ # Change root shell
+  chsh
+   
+   # New shell = /usr/bin/zsh
+
+  
+ # Change user shell
+  su "$MYUSER" -c chsh
+	
+	# New shell = /usr/bin/zsh
+ 
+}
+
+
+# exit the chroot
+{ 
+ 
+  exit
+ 
+} 
+
+
+
+# unmount the new system
+{
+
+  sudo umount -R "$INSTALL_POINT"/
+ 
+}
+
+
+
+#######################################################################
+	
+# Resources
+ 
+https://wiki.archlinux.org/index.php/Installation_Guide
+https://wiki.archlinux.org/index.php/Beginners%27_Guide
+

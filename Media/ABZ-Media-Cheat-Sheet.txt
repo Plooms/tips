@@ -75,3 +75,13 @@ export Path=/tmp/bsss && parent
 
 
 ######### End of Drop 2 #########
+
+
+# Search for files gotten from sabnzbd but didnt complete (one liner)
+
+# Go into folder containing media files:
+ls | sed -n -e "s/\(.*[Ss][0-9][0-9][Ee][0-9][0-9]\).*/\1/p" | uniq | while read a; do kat-hunter $a ;done
+
+
+
+

@@ -358,7 +358,7 @@ networkmanager-openvpn sshuttle kdeplasma-applets-networkmanagement
   {
 
 yaourt --noconfirm -S --needed tree htop iotop nethogs nettop \
-ncdu screen smartmontools iperf xclip
+ncdu screen smartmontools iperf xclip sysstat
 
   }
   

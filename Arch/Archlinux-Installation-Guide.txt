@@ -6,7 +6,7 @@
 -------------------------------------------
 
   # Set The User Variable
-  MYUSER='sal'
+  MYUSER='abz'
   
   # Set the install Location Variable
   INSTALL_POINT='/mnt/arch'
@@ -15,15 +15,15 @@
   
   HDD_MASTER='/dev/sdb'
 
-  HDD_ROOT='/dev/mapper/S0-ROOT'
+  HDD_ROOT='/dev/sdc1'
 
-  HDD_BOOT='/dev/sdb5'
+  HDD_BOOT='/dev/sdc1'
 
-  HDD_HOME='/dev/mapper/S0-HOME'
+  HDD_HOME='/dev/sdc2'
   
-  HDD_VAR='/dev/mapper/S0-VAR'
+  HDD_VAR='/dev/x'
   
-  HDD_BIN='/dev/mapper/S0-BIN'
+  HDD_BIN='/dev/x'
   
   HDD_WEBAPPS=''
 
@@ -173,10 +173,10 @@
 -------------------------------------------
   
   # Set The User Variable (in the Chroot)
-  MYUSER='sal'
+  MYUSER='abz'
   
   # Set The HDD Variables (in the Chroot)
-  HDD_MASTER='/dev/sdb'
+  HDD_MASTER='/dev/sdc'
   
   # Set The Container Variables (in the Chroot)
   HDD_MASTER='/dev/loop3'
@@ -247,6 +247,15 @@
 
 }
 
+
+# Initialize CA CERT
+{
+
+  pacman -S ca-certificates ca-certificates-cacert ca-certificates-mozilla ca-certificates-utils                                                
+
+}
+
+
 # Install xorg - Nvidia - XFCE
 {
 
@@ -302,10 +311,10 @@ echo "
 # Optional ( mkdir /media/R1 + add to fstab)
 {
 
-mkdir /media/R1
+mkdir /mnt/R1
 
 # To prevent writing when unmounted (execute it while not mounted)
-sudo chattr +i /media/R1
+sudo chattr +i /mnt/R1
 
 
 
@@ -313,10 +322,10 @@ echo "
 
 
 #NFS
-#192.168.1.9:/mnt/S1 /media/S1 nfs4 auto,user,noatime 0 0
+#10.0.0.101:/mnt/R1 /media/S1 nfs4 auto,user,noatime 0 0
 
-Gluster
-C1:/R1    /media/R1       glusterfs       defaults        0 0
+#Gluster
+#C1:/R1    /media/R1       glusterfs       defaults        0 0
 
 " >> /etc/fstab
 
@@ -340,7 +349,7 @@ nfs-utils x2goserver x2goclient beep parallel
   {
 
 yaourt --noconfirm -S --needed networkmanager network-manager-applet \
-networkmanager-pptp openvpn btsync btsync-autoconfig \
+networkmanager-pptp openvpn \
 networkmanager-openvpn sshuttle kdeplasma-applets-networkmanagement
 
   }

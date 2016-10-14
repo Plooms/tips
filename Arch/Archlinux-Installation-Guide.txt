@@ -435,9 +435,8 @@ yaourt --noconfirm -S --needed ecryptfs-utils encfs truecrypt
   # Virtualization
   {
 
-yaourt --noconfirm -S --needed virtualbox virtualbox-host-modules \
-virtualbox-guest-iso virtualbox-guest-utils virtualbox-guest-modules \
-libvirt virt-manager
+yaourt --noconfirm -S --needed virtualbox virtualbox-guest-iso \
+virtualbox-guest-utils libvirt virt-manager virtualbox-ext-oracle
 
   }
 
@@ -507,12 +506,7 @@ yaourt --noconfirm -S --needed apache php php-apache mariadb
 
   }
 
-  # The Mother load
-  {
-	  
-		### Deprecated ###
-  
-  }
+
 
 }
 
@@ -603,7 +597,7 @@ yaourt --noconfirm -S --needed apache php php-apache mariadb
 
   sudo blkid
  
-  nano /etc/fstab
+  sudo nano /etc/fstab
  
  #OPTIONAL: If genfstab didn't work
  # then, Add this if it is a container

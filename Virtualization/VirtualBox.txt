@@ -1,0 +1,9 @@
+#!/bin/bash 
+# Virtualbox guide
+
+
+# To start needed modules
+	n /etc/mkinitcpio.conf
+
+# Add these to the MODULES section
+vboxdrv vboxnetadp vboxnetflt vboxpci

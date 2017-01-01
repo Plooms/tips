@@ -1,4 +1,0 @@
-#!/bin/bash
-#Show absolute path for files
-
-ls -d -1 "$PWD"/*

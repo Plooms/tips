@@ -1,7 +1,0 @@
-#!/bin/bash
-# Repeat a function or command (x) number of times
-
-for (( i = 0; i <255 ; i++ ))
-do 
-echo $i-ass
-done

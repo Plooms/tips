@@ -1,7 +1,0 @@
-#!/bin/bash
-How to copy everything except ASS
-
-
-cp *?[!ASS]     /SOURCE    /Destination
-
-or omit /SOURCE and just use /DESTINATION

@@ -1,9 +1,0 @@
-#!/bin/bash
-# Measure Network speed using speedtest-cli
-
- # Install
- p python-pip ; sudo pip install speedtest-cli
-
-
- # Measure net-speed
- speedtest-cli

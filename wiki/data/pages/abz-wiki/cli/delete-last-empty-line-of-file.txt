@@ -1,7 +1,0 @@
-#!/bin/bash
-# Delete last empty line of file
-
-
-
-# Delete last empty line of file in place
-perl -pi -e 'chomp if eof' filename

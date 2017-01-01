@@ -1,6 +1,0 @@
-#!/bin/bash
-
-
-
-sudo usermod -a -G wheel abz
-

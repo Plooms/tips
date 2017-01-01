@@ -1,6 +1,0 @@
-a:18:{i:0;a:3:{i:0;s:14:"document_start";i:1;a:0:{}i:2;i:0;}i:1;a:3:{i:0;s:6:"p_open";i:1;a:0:{}i:2;i:0;}i:2;a:3:{i:0;s:5:"cdata";i:1;a:1:{i:0;s:48:"#!/bin/bash
-# When 4G slows to a crawl; do this:";}i:2;i:1;}i:3;a:3:{i:0;s:7:"p_close";i:1;a:0:{}i:2;i:49;}i:4;a:3:{i:0;s:12:"preformatted";i:1;a:1:{i:0;s:29:"send 4469 to 902
-to cancel 4G";}i:2;i:51;}i:5;a:3:{i:0;s:6:"p_open";i:1;a:0:{}i:2;i:51;}i:6;a:3:{i:0;s:5:"cdata";i:1;a:1:{i:0;s:6:"# then";}i:2;i:85;}i:7;a:3:{i:0;s:7:"p_close";i:1;a:0:{}i:2;i:92;}i:8;a:3:{i:0;s:12:"preformatted";i:1;a:1:{i:0;s:36:"send 4466 to 902
-to enable 4G again ";}i:2;i:92;}i:9;a:3:{i:0;s:6:"p_open";i:1;a:0:{}i:2;i:92;}i:10;a:3:{i:0;s:5:"cdata";i:1;a:1:{i:0;s:38:"# Restart the modem when 4G is back on";}i:2;i:133;}i:11;a:3:{i:0;s:7:"p_close";i:1;a:0:{}i:2;i:171;}i:12;a:3:{i:0;s:6:"p_open";i:1;a:0:{}i:2;i:171;}i:13;a:3:{i:0;s:5:"cdata";i:1;a:1:{i:0;s:12:"############";}i:2;i:175;}i:14;a:3:{i:0;s:7:"p_close";i:1;a:0:{}i:2;i:188;}i:15;a:3:{i:0;s:12:"preformatted";i:1;a:1:{i:0;s:61:"ارسل 4469 الى 902
-لإلغاء الجيل الرابع";}i:2;i:188;}i:16;a:3:{i:0;s:12:"preformatted";i:1;a:1:{i:0;s:120:"بعدين ارسل 4466 الى 902
-لتفعيل الجيل الرابع وسوي رستارت وتنحل المشكلة";}i:2;i:253;}i:17;a:3:{i:0;s:12:"document_end";i:1;a:0:{}i:2;i:253;}}

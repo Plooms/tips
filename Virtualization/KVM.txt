@@ -1,5 +1,0 @@
-#!/bin/bash 
-# KVM installation and configuration guide
-
-
-http://lifeisabug.com/kvm-virtualization-arch-linux-host-system-qemu-virtio-hugepages-systemd/

@@ -1,9 +1,0 @@
-#!/bin/bash
-#Open Tabs from the terminal in the background
-
-
-
-#In firefox's about:config page set preference:
-
-'browser.tabs.loadDivertedInBackground' to 'true'
-

@@ -1,8 +1,0 @@
-#!/bin/bash
-# Stress your cpu
-
-# install stress
-pp stress
-
-# stress Quad Core CPU for 60 seconds
-stress -c 4 -t 60

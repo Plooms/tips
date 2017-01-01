@@ -1,6 +1,0 @@
-#!/bin/bash
-# Pipe a file to your sound device
-
-
-
- cat /dev/urandom | pacat

@@ -1,5 +1,0 @@
-#!/bin/bash
-# using wget
-
-# Download a directory recursively from a webpage
-wget -c -k --random-wait -r -p -E -e robots=off -U mozilla "$URL"
